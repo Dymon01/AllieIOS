@@ -1,36 +1,26 @@
 package ALLie_AutoTests;
 
-import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.remote.MobileCapabilityType;
-
+import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.openqa.jetty.html.Target;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.remote.server.handler.ExecuteScript;
 import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+
+import io.appium.java_client.ios.IOSDriver;
 
 public class BaseTest {
 
@@ -56,7 +46,7 @@ public class BaseTest {
 		//capabilities.setCapability("platformVersion", "8.3");
 		capabilities.setCapability("deviceName", "iPad Air");
 		capabilities.setCapability("app","com.icrtech.allie");
-		wd = new IOSDriver(new URL("http://127.0.0.1:4724/wd/hub"),	capabilities);
+		wd = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"),	capabilities);
 		wd.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
 		 wait = new WebDriverWait(wd, 10);
 		return wd;
@@ -66,7 +56,7 @@ public class BaseTest {
 	    driver = new SafariDriver();
 	    //driver = new FirefoxDriver();
 	    wait = new WebDriverWait(driver, 10);
-	    driver.manage().window().setSize(new Dimension(1180, 820));
+	    //driver.manage().window().setSize(new Dimension(1180, 820));
 	    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	    return driver;
 	  }

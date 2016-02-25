@@ -24,7 +24,11 @@ public class SomeTests extends Basemethods{
 	private WebDriverWait wait;
 
 	public SomeTests(String file, String xpath,String name, String  keys, IOSDriver wd) {
-		super(file, xpath, name, keys, wd);	
+
+		super(file, xpath, name, keys, wd, driver);	
+
+		
+
 		this.file = file;
 		this.xpath = xpath;
 		this.name = name;

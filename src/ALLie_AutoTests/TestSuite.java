@@ -17,19 +17,19 @@ import org.testng.annotations.Test;
 
 public class TestSuite extends BaseTest {
 
-	
-	@Test
-	public void AASome() throws Exception {
-
-		SomeTests some = new SomeTests(file, xpath, name, keys, wd);
-		some.SomeTests1();
-
-	}
+//	
+//	@Test
+//	public void AASome() throws Exception {
+//
+//		SomeTests some = new SomeTests(file, xpath, name, keys, wd);
+//		some.SomeTests1();
+//
+//	}
 	
 	@Test
 	public void AccountScreen() throws Exception {
-
-			 AccountScreen accountScreen = new AccountScreen(file, xpath, name, keys, wd);
+		
+			 AccountScreen accountScreen = new AccountScreen(file, xpath, name, keys, wd, driver);
 			 accountScreen.AccountCheck();
 
 	}
