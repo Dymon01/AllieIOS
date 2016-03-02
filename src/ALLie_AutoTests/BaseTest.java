@@ -32,6 +32,7 @@ public class BaseTest {
 	protected String xpath;
 	protected String keys;
 	protected String file;
+	protected String num;
   public Calendar calendar = Calendar.getInstance();
   public SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm");
 	@BeforeMethod
@@ -41,23 +42,23 @@ public class BaseTest {
 		Thread.sleep(2000);
 	//	capabilities.setCapability("appium-version", "1.0");
 		capabilities.setCapability("platformName", "iOS");
-		capabilities.setCapability("autoAcceptAlerts", true);
+		//capabilities.setCapability("autoAcceptAlerts", true);
 	//	capabilities.setCapability("waitForAppScript", "$.delay(18000); $.switchTo().alert(); $.defaultButton().tap(); true;");
 		//capabilities.setCapability("platformVersion", "8.3");
 		capabilities.setCapability("deviceName", "iPad Air");
 		capabilities.setCapability("app","com.icrtech.allie");
 		wd = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"),	capabilities);
 		wd.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
-		 wait = new WebDriverWait(wd, 10);
+		 wait = new WebDriverWait(wd, 20);
 		return wd;
 	}
   
 	public Object WebsetUp() throws Exception {
-	    driver = new SafariDriver();
-	    //driver = new FirefoxDriver();
-	    wait = new WebDriverWait(driver, 10);
-	    //driver.manage().window().setSize(new Dimension(1180, 820));
-	    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//	    driver = new SafariDriver();
+//	    //driver = new FirefoxDriver();
+//	    wait = new WebDriverWait(driver, 10);
+//	    //driver.manage().window().setSize(new Dimension(1180, 820));
+//	    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	    return driver;
 	  }
 
@@ -78,7 +79,7 @@ public class BaseTest {
     	 	  //Get the screenshot
     		  System.out.println("Create screenshot");
             File screenshot = ((TakesScreenshot) wd).getScreenshotAs(OutputType.FILE);
-            File testScreenShot = new File("Documents/workspace/TEST00/AutoTestsLogs/ScreenshotFail/" + methodName+"_"+formater.format(calendar.getTime())+".jpg");
+            File testScreenShot = new File("AutoTestsLogs/ScreenshotFail/" + methodName+"_"+formater.format(calendar.getTime())+".jpg");
         //Copy the file to screenshot folder
         FileUtils.copyFile(screenshot, testScreenShot);  
         

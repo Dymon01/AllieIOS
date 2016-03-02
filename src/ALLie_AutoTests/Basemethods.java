@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -38,18 +39,21 @@ public class Basemethods extends BaseTest {
 	protected String xpath;
 	protected String keys;
 	protected String file;
+	protected String num;
 	protected static WebDriver driver;
 	  protected  WebDriverWait wait;
-	public Basemethods(String file, String xpath,String name, String  keys, IOSDriver wd, WebDriver driver ) {
+	public Basemethods(String file, String xpath,String name, String  keys, IOSDriver wd, WebDriver driver, String num ) {
 	super();	
 		this.file = file;
 		this.xpath = xpath;
 		this.name = name;
 		this.keys = keys;
 		this.wd = wd;
-		this.wait = new WebDriverWait(wd, 26);
+		this.wait = new WebDriverWait(wd, 36);
+		this.num = num;
 		
 	}
+	
 	
 ////for web
 	public void setUpWeb() throws Exception {
@@ -160,7 +164,45 @@ public class Basemethods extends BaseTest {
 	public void SendKeysName(String keys , String name) throws Exception {
 		wd.findElement(By.name(name)).sendKeys(keys);
 	}
-}
+	
+	 public String GenerateCheckDigit(String[] args) {
+		 long l = Long.valueOf("4" + RandomStringUtils.randomNumeric(15));
+	       // long l = 123456789012345L;
+	        int cd = generateCheckDigit(l);
+	        String num = String.valueOf(l+cd);
+	        System.out.println("Valid card number="+num);
+	       return num;
+	    }
+	 
+	 
+	    private int generateCheckDigit(long l) {
+	        String str = Long.toString(l);
+	        int[] ints = new int[str.length()];
+	        for(int i = 0;i< str.length(); i++){
+	            ints[i] = Integer.parseInt(str.substring(i, i+1));
+	        }
+	        for(int i = ints.length-2; i>=0; i=i-2){
+	            int j = ints[i];
+	            j = j*2;
+	            if(j>9){
+	                j = j%10 + 1;
+	            }
+	            ints[i]=j;
+	        }
+	        int sum=0;
+	        for(int i = 0;i< ints.length; i++){
+	            sum+=ints[i];
+	        }
+	        if(sum%10==0){
+	            return 0;
+	        }else return 10-(sum%10);
+	    }
+	 
+	}
+	
+	
+	
+
 
 
 	
