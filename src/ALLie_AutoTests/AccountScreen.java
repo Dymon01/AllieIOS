@@ -205,7 +205,7 @@ wd.resetApp();
 			//(JavascriptExecutor)wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", 1); put("touchCount", 1); put("duration", 0.5); put("x", 360); put("y", 318); }});
 			try {
 				TapName("Unlink");
-				Thread.sleep(2900);
+				Thread.sleep(5500);
 				wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 717); put("y", (double) 160); }});
 			} catch (Exception e3) {
 				
