@@ -1,0 +1,4 @@
+
+cd /Users/dmitriy/Documents/workspace/Allie
+
+tail -f CappLog.txt

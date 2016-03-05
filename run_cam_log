@@ -1,0 +1,6 @@
+source ~/.bash_profile 
+adb tcpip 5555
+adb connect 192.168.7.92
+cd /Users/dmitriy/Documents/workspace/Allie
+adb logcat -v threadtime> CappLog.txt 
+

@@ -1,8 +1,10 @@
 package ALLie_AutoTests;
 
 import java.awt.Dimension;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -38,8 +40,13 @@ public class BaseTest {
 	@BeforeMethod
 	
 	public Object setUp() throws Exception {
+
+	
+	
+		
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		Thread.sleep(2000);
+		
 	//	capabilities.setCapability("appium-version", "1.0");
 		capabilities.setCapability("platformName", "iOS");
 		//capabilities.setCapability("autoAcceptAlerts", true);

@@ -49,7 +49,7 @@ public class Basemethods extends BaseTest {
 		this.name = name;
 		this.keys = keys;
 		this.wd = wd;
-		this.wait = new WebDriverWait(wd, 36);
+		this.wait = new WebDriverWait(wd, 66);
 		this.num = num;
 		
 	}
@@ -141,6 +141,9 @@ public class Basemethods extends BaseTest {
 		}  
 	  }
 	
+	public String GetAttributeMobXpath(String name, String xpath) throws Exception {
+	 return wd.findElement(By.xpath(xpath)).getAttribute(name);
+	}
 	public String GetTextMobXpath(String xpath) throws Exception {
 		return wd.findElement(By.xpath(xpath)).getText();
 	  }
@@ -170,7 +173,7 @@ public class Basemethods extends BaseTest {
 	       // long l = 123456789012345L;
 	        int cd = generateCheckDigit(l);
 	        String num = String.valueOf(l+cd);
-	        System.out.println("Valid card number="+num);
+	       // System.out.println("Valid card number="+num);
 	       return num;
 	    }
 	 
@@ -198,13 +201,73 @@ public class Basemethods extends BaseTest {
 	        }else return 10-(sum%10);
 	    }
 	 
+	
+	
+	
+	
+
+
+
+	
+public void Restore() throws Exception {
+	try {
+	wd.findElement(By.name("Button My ALLies Edit")).click();
+wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 440); put("y", (double) 187); }});
+		
+try {
+	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]")).click();
+	Thread.sleep(5200);
+	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIASecureTextField[1]")).sendKeys("splinex271813");
+	TapXpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]");
+} catch (Exception e) {
+}
+wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[12]/UIAStaticText[1]")).click();
+		wd.findElement(By.name("REMOVE")).click();
+	} catch (Exception e) {
+		
+	}
+	wd.findElement(By.name("Side menu button")).click();
+	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]")).click();
+	try {
+		wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[2]/UIAStaticText[1]")).click();
+		wd.findElement(By.name("REMOVE PLAN")).click();
+		wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]")).click();
+	} catch (Exception e) {
+		wd.findElement(By.name("Back button black")).click();
 	}
 	
+	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[5]/UIAButton[1]")).click();
+	
+}
+
+public void RunLog() throws Exception {
+	Runtime.getRuntime().exec(new String[] {"/Users/dmitriy/Documents/workspace/Allie/run_cam_log"});
+	Thread.sleep(9000);
+	Runtime.getRuntime().exec(new String[] {"/Users/dmitriy/Documents/workspace/Allie/view_log_in_term"});
+	
+	//Runtime.getRuntime().exec(new String[] {"/Users/dmitriy/Downloads/android-sdk-macosx/platform-tools/adb","logcat", "-v" , "threadtime",">", "/Users/dmitriy/Documents/workspace/Allie/1.txt"});
+//	StringBuffer output = new StringBuffer();
+//
+//	Process p;
+//	try {
+//		p = Runtime.getRuntime().exec(new String[] {"/Users/dmitriy/Downloads/android-sdk-macosx/platform-tools/adb","logcat",  "-v" , "threadtime",">", "1.txt"});
+//		p.waitFor();
+//		BufferedReader reader = 
+//                        new BufferedReader(new InputStreamReader(p.getInputStream()));
+//
+//                    String line = "";			
+//		while ((line = reader.readLine())!= null) {
+//			output.append(line + "\n");
+//			
+//		}
+//
+//	} catch (Exception e) {
+//		e.printStackTrace();
+//	}
+//	System.out.println(output);
 	
 	
+}
 
 
-
-	
-	
-
+}

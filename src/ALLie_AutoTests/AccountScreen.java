@@ -1,6 +1,8 @@
 package ALLie_AutoTests;
 
 import static org.junit.Assert.assertEquals;
+
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSDriver;
 
 import java.io.BufferedReader;
@@ -24,6 +26,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -52,14 +55,59 @@ public class AccountScreen extends Basemethods{
 	}
 
 	public void AccountCheck() throws Exception {
+//		setUpWeb(); //WebDriver
+//		Get("https://accounts.google.com/");
+//		SendKeysID("s1874@mail.ru","Email");
+//		ClickName("next");
+//		SendKeysID("S13wasdS13","Passwd");
+//		ClickName("signIn");
+//		
+//		ClickcssSelector("a.gb_b.gb_Nb");
+//		ClickcssSelector("#gb36 > span.gb_3");
+//		Thread.sleep(8000);
+//		   driver.findElement(By.id("yt-masthead-account-picker")).click();
+//		driver.findElement(By.xpath("(//button[@type='button'])[3]")).click();
+//	    driver.findElement(By.xpath("//div[@id='yt-uix-clickcard-card263']/div[2]/div[2]/div/div[2]/div/a/span")).click();
+//	    //driver.findElement(By.linkText("Прямые трансляции")).click();
+	   
+		//RunLog();
+		try {
+			WaitName("LOGIN");
+			String buttonNo = null;
+			do{
+			TapName("NO INTERNET CONNECTION RETRY");
+			buttonNo = GetAttributeMobXpath("name", "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]");
+			}while(buttonNo.equals("Buy new allie"));
+		} catch (Exception e3) {
+			
+		}
+		
+//		name: In progress
+//		type: UIAActivityIndicator
+//		value: 1
+//		label: In progress
+//		enabled: true
+//		visible: false
+//		valid: true
+//		location: {365.5, 493.5}
+//		size: {37, 37}
+//		xpath: //UIAApplication[1]/UIAWindow[1]/UIAActivityIndicator[1]
+			
+			
+		 String button = GetAttributeMobXpath("name", "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]");
+		// System.out.println(button); //Buy new allie
+if (!button.equals("LOGIN"))
+{Restore();}
+
+
+
 		int r = 0;
 		do {
 			Calendar calendar = Calendar.getInstance();
 			 SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm");
 			 String num = GenerateCheckDigit(null);
-		
 
-
+				WaitName("LOGIN");
 		String mailID = new String("dpleamco+" + formater.format(calendar.getTime())+ "@icrealtech.com");
 		TapName("LOGIN");
 		TapName("CREATE ACCOUNT");
@@ -118,7 +166,7 @@ wd.resetApp();
 				"//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIASecureTextField[1]");
 		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAButton[1]");
 		TapName("LOGIN");
-		
+		System.out.println("____LOGIN_Passed____");
 		
 		Thread.sleep(6000);
 		WaitName("Buy new allie");
@@ -127,10 +175,12 @@ wd.resetApp();
 		
 		WaitName("Select device");
 		TapName("Allie-16155100228");
+		try {//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIATextField[1]
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIASecureTextField[1]")).sendKeys("admin");
+			TapXpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]");
+		} catch (Exception e) {
+		}
 		
-		
-	//	try {
-		//
 //		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
 //			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[4]")).click();
 			Thread.sleep(8000);
@@ -145,7 +195,61 @@ wd.resetApp();
 			WaitName("SUCCESS!");
 			TapName("Side menu button");
 			TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]");
+			System.out.println("____CamAdded____");
+			RunLog();
+			
+			wd.findElement(By.name("Side menu button")).click();
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]")).click();
+			TapName("Social");
+			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 717); put("y", (double) 160); }});
+			//(JavascriptExecutor)wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", 1); put("touchCount", 1); put("duration", 0.5); put("x", 360); put("y", 318); }});
+			try {
+				TapName("Unlink");
+				Thread.sleep(2900);
+				wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 717); put("y", (double) 160); }});
+			} catch (Exception e3) {
+				
+			}
+			
+			WaitXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIATextField[1]");
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIATextField[1]")).click();
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIATextField[1]")).sendKeys("dpleamco@icrealtech.com");
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIASecureTextField[1]")).click();
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIASecureTextField[1]")).sendKeys("Dymon0101");
+			wd.findElement(By.name("Go")).click();
+		//	wd.context("NATIVE_APP");
+			Thread.sleep(9600);
+
+
+//System.out.println(String.valueOf(wd.getPageSource()));
+			
+			
+			
+			Point loc = (wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAButton[1]")).getLocation());
+			String locs = loc.toString();
+			
+
+			String[] parts = locs.split(",");
+			String xp = parts[0];
+			String yp = parts[1];
+			xp = xp.replace("(", "").replace(" ", "");
+			yp = yp.replace(")", "").replace(" ", "");
+		
+
+			int xpd = Integer.parseInt(xp);
+			int ypd = Integer.parseInt(yp);
+			System.out.println(xp + "  " + yp);
+			//wd.context("NATIVE_APP");
+			wd.tap(1, xpd, ypd, 1);
+		//wd.context(originalContext);
+			TapName("Back button black");
+
+			
+			wd.findElement(By.name("Side menu button")).click();
+			TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]");
 			Thread.sleep(2600);
+			
+			
 			TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
 
 
@@ -169,10 +273,42 @@ wd.resetApp();
 			
 			
 			GetScreenShot("Screenshots/Cam.jpg");
+			
+			ath: //UIAApplication[1]/UIAWindow[1]/UIAStaticText[4]
+				
+				xpath: //UIAApplication[1]/UIAWindow[1]/UIAImage[3]
+					
+					wd.findElement(By.name("Button stream")).click();
+				wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIATextField[1]")).sendKeys("Allie"+RandomStringUtils.randomNumeric(3));
+				wd.findElement(By.name("Return")).click();
+				Thread.sleep(9000);
+
+String time = GetAttributeMobXpath("value", "//UIAApplication[1]/UIAWindow[1]/UIAStaticText[1]");
+System.out.println(time);
+
+String live = GetAttributeMobXpath("value", "//UIAApplication[1]/UIAWindow[1]/UIAImage[3]");
+System.out.println(live);
+				wd.findElement(By.name("Button pause stream")).click();
+				Thread.sleep(1000);
+				wd.findElement(By.name("Snapthot player button")).click();
+				wd.findElement(By.name("Microphone player button off")).click();
+
+				wd.findElement(By.name("Share player button")).click();
+				wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAPopover[1]/UIAActivityView[1]/UIAActionSheet[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[3]/UIACollectionView[1]/UIACollectionCell[2]")).click();
+						wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAPopover[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]")).click();
+TapName("Done");
+wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 399); put("y", (double) 941); }});
+							//crash
+						//wd.findElement(By.name("Camera vr")).click();
+						wd.findElement(By.name("Button resume stream")).click();
+
+				
+						TapName("Button stream stop");
+			
 			TapName("Gallery player button");
 		try {
 			WaitXpath("//UIAApplication[1]/UIAWindow[1]/UIAStaticText[1]");
-String Gall = GetTextWebXpath("//UIAApplication[1]/UIAWindow[1]/UIAStaticText[2]");
+String Gall = GetAttributeMobXpath("value", "//UIAApplication[1]/UIAWindow[1]/UIAStaticText[1]");
 System.out.println(Gall);
 		} catch (Exception e2) {
 		}
@@ -181,13 +317,13 @@ System.out.println(Gall);
 			TapName("Snapthot player button");
 			TapName("Gallery player button");
 			
-//			String photo = GetTextWebXpath("//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[1]");
+//		String photo = GetAttributeMobXpath("value", "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[1]");
 //			System.out.println(photo);
 			try {
 				TapXpath("//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[1]");
 				TapName("Gallery remove video");
-//	TapName("Cancel");
-				TapXpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]");
+	TapName("Cancel");
+				//TapXpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]");
 			} catch (Exception e1) {
 
 			}
@@ -200,15 +336,17 @@ System.out.println(Gall);
 				TapName("Yes");
 			} catch (Exception e1) {
 			}
-//			String Gall2 = GetTextWebXpath("//UIAApplication[1]/UIAWindow[1]/UIAStaticText[1]");
+//			String Gall2 = GetTextMobXpath("//UIAApplication[1]/UIAWindow[1]/UIAStaticText[1]");
 //			System.out.println(Gall2);
 			TapName("Back button black");
+			
 			TapName("Record player button");
 			TapName("OK");
 			WaitXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAPageIndicator[1]");
 			TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAPageIndicator[1]");
 			TapName("SELECT PLAN");
 			// add card
+			Thread.sleep(1000);
 			WaitXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[1]");
 			TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[1]");
 			//SendKeysXpath(num,"//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[1]");
@@ -229,6 +367,7 @@ System.out.println(Gall);
 			TapName("SUBMIT");
 			
 			Thread.sleep(9900);
+			System.out.println("____CardAdded____");
 			GetScreenShot("Screenshots/Cam2.jpg");
 			WaitName("Back button black");
 			TapName("Back button black");
@@ -280,9 +419,8 @@ System.out.println(Gall);
 
 		
 		//	wd.resetApp();
-		r++;
-		System.out.println(r);
-		
+		r++;	System.out.println(r);
+	
 	} while (r < 90);
 		wd.quit();
 		
