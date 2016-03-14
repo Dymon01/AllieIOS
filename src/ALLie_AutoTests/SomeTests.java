@@ -46,6 +46,10 @@ public class SomeTests extends Basemethods{
 	public void SomeTests() throws Exception {
 		Thread.sleep(3000);
 		
+//		wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextField[1]")).sendKeys("tcp://192.168.7.92:2000");
+//		wd.findElement(By.name("Start")).click();
+		
+		
 		try {
 			String main1 = GetTextMobXpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[1]");
 						

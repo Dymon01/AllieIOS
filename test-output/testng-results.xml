@@ -2,36 +2,36 @@
 <testng-results skipped="2" failed="1" total="3" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="707782" started-at="2016-03-05T22:19:05Z" finished-at="2016-03-05T22:30:53Z">
+  <suite name="Default suite" duration-ms="511772" started-at="2016-03-14T08:41:57Z" finished-at="2016-03-14T08:50:29Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="707782" started-at="2016-03-05T22:19:05Z" finished-at="2016-03-05T22:30:53Z">
+    <test name="Default test" duration-ms="511772" started-at="2016-03-14T08:41:57Z" finished-at="2016-03-14T08:50:29Z">
       <class name="ALLie_AutoTests.TestSuite">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:ALLie_AutoTests.TestSuite@6adca536]" name="setUp" is-config="true" duration-ms="17329" started-at="2016-03-06T03:19:05Z" finished-at="2016-03-06T03:19:23Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:ALLie_AutoTests.TestSuite@6adca536]" name="setUp" is-config="true" duration-ms="39391" started-at="2016-03-14T13:41:57Z" finished-at="2016-03-14T13:42:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="AccountScreen()[pri:0, instance:ALLie_AutoTests.TestSuite@6adca536]" name="AccountScreen" duration-ms="689957" started-at="2016-03-06T03:19:23Z" finished-at="2016-03-06T03:30:53Z">
+        <test-method status="FAIL" signature="AccountScreen()[pri:0, instance:ALLie_AutoTests.TestSuite@6adca536]" name="AccountScreen" duration-ms="472161" started-at="2016-03-14T13:42:36Z" finished-at="2016-03-14T13:50:28Z">
           <exception class="org.openqa.selenium.remote.SessionNotFoundException">
             <message>
               <![CDATA[
-Command duration or timeout: 20 milliseconds
+Command duration or timeout: 19 milliseconds
 Build info: version: '2.45.0', revision: '32a636c', time: '2015-03-05 22:01:35'
 System info: host: 'Dmitriys-MacBook-Pro-3.local', ip: '10.0.2.15', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.11.3', java.version: '1.8.0_45'
 Driver info: io.appium.java_client.ios.IOSDriver
 Capabilities [{app=com.icrtech.allie, networkConnectionEnabled=false, warnings={}, databaseEnabled=false, deviceName=iPad Air, platform=MAC, desired={app=com.icrtech.allie, platformName=iOS, deviceName=iPad Air}, webStorageEnabled=false, locationContextEnabled=false, browserName=iOS, takesScreenshot=true, javascriptEnabled=true, platformName=iOS}]
-Session ID: 45962493-2b78-4d3d-8bad-f064700012c6
-*** Element info: {Using=name, value=Back button black}]]>
+Session ID: 998a3743-83b7-4d42-8450-38fa5d7b2acf
+*** Element info: {Using=name, value=Button pause stream}]]>
             </message>
             <full-stacktrace>
               <![CDATA[org.openqa.selenium.remote.SessionNotFoundException: 
-Command duration or timeout: 20 milliseconds
+Command duration or timeout: 19 milliseconds
 Build info: version: '2.45.0', revision: '32a636c', time: '2015-03-05 22:01:35'
 System info: host: 'Dmitriys-MacBook-Pro-3.local', ip: '10.0.2.15', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.11.3', java.version: '1.8.0_45'
 Driver info: io.appium.java_client.ios.IOSDriver
 Capabilities [{app=com.icrtech.allie, networkConnectionEnabled=false, warnings={}, databaseEnabled=false, deviceName=iPad Air, platform=MAC, desired={app=com.icrtech.allie, platformName=iOS, deviceName=iPad Air}, webStorageEnabled=false, locationContextEnabled=false, browserName=iOS, takesScreenshot=true, javascriptEnabled=true, platformName=iOS}]
-Session ID: 45962493-2b78-4d3d-8bad-f064700012c6
-*** Element info: {Using=name, value=Back button black}
+Session ID: 998a3743-83b7-4d42-8450-38fa5d7b2acf
+*** Element info: {Using=name, value=Button pause stream}
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -47,8 +47,7 @@ Session ID: 45962493-2b78-4d3d-8bad-f064700012c6
 	at org.openqa.selenium.By$ByName.findElement(By.java:299)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
 	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:75)
-	at ALLie_AutoTests.Basemethods.TapName(Basemethods.java:154)
-	at ALLie_AutoTests.AccountScreen.AccountCheck(AccountScreen.java:315)
+	at ALLie_AutoTests.AccountScreen.AccountCheck(AccountScreen.java:355)
 	at ALLie_AutoTests.TestSuite.AccountScreen(TestSuite.java:34)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -80,7 +79,7 @@ Session ID: 45962493-2b78-4d3d-8bad-f064700012c6
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AccountScreen -->
-        <test-method status="FAIL" signature="catchExceptions(org.testng.ITestResult)[pri:0, instance:ALLie_AutoTests.TestSuite@6adca536]" name="catchExceptions" is-config="true" duration-ms="0" started-at="2016-03-06T03:30:53Z" finished-at="2016-03-06T03:30:53Z">
+        <test-method status="FAIL" signature="catchExceptions(org.testng.ITestResult)[pri:0, instance:ALLie_AutoTests.TestSuite@6adca536]" name="catchExceptions" is-config="true" duration-ms="0" started-at="2016-03-14T13:50:28Z" finished-at="2016-03-14T13:50:28Z">
           <params>
             <param index="0">
               <value>
@@ -91,21 +90,21 @@ Session ID: 45962493-2b78-4d3d-8bad-f064700012c6
           <exception class="org.openqa.selenium.remote.SessionNotFoundException">
             <message>
               <![CDATA[
-Command duration or timeout: 12 milliseconds
+Command duration or timeout: 61 milliseconds
 Build info: version: '2.45.0', revision: '32a636c', time: '2015-03-05 22:01:35'
 System info: host: 'Dmitriys-MacBook-Pro-3.local', ip: '10.0.2.15', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.11.3', java.version: '1.8.0_45'
 Driver info: io.appium.java_client.ios.IOSDriver
 Capabilities [{app=com.icrtech.allie, networkConnectionEnabled=false, warnings={}, databaseEnabled=false, deviceName=iPad Air, platform=MAC, desired={app=com.icrtech.allie, platformName=iOS, deviceName=iPad Air}, webStorageEnabled=false, locationContextEnabled=false, browserName=iOS, takesScreenshot=true, javascriptEnabled=true, platformName=iOS}]
-Session ID: 45962493-2b78-4d3d-8bad-f064700012c6]]>
+Session ID: 998a3743-83b7-4d42-8450-38fa5d7b2acf]]>
             </message>
             <full-stacktrace>
               <![CDATA[org.openqa.selenium.remote.SessionNotFoundException: 
-Command duration or timeout: 12 milliseconds
+Command duration or timeout: 61 milliseconds
 Build info: version: '2.45.0', revision: '32a636c', time: '2015-03-05 22:01:35'
 System info: host: 'Dmitriys-MacBook-Pro-3.local', ip: '10.0.2.15', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.11.3', java.version: '1.8.0_45'
 Driver info: io.appium.java_client.ios.IOSDriver
 Capabilities [{app=com.icrtech.allie, networkConnectionEnabled=false, warnings={}, databaseEnabled=false, deviceName=iPad Air, platform=MAC, desired={app=com.icrtech.allie, platformName=iOS, deviceName=iPad Air}, webStorageEnabled=false, locationContextEnabled=false, browserName=iOS, takesScreenshot=true, javascriptEnabled=true, platformName=iOS}]
-Session ID: 45962493-2b78-4d3d-8bad-f064700012c6
+Session ID: 998a3743-83b7-4d42-8450-38fa5d7b2acf
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -149,15 +148,15 @@ Session ID: 45962493-2b78-4d3d-8bad-f064700012c6
           <reporter-output>
           </reporter-output>
         </test-method> <!-- catchExceptions -->
-        <test-method status="SKIP" signature="setUp()[pri:0, instance:ALLie_AutoTests.TestSuite@6adca536]" name="setUp" is-config="true" duration-ms="0" started-at="2016-03-06T03:30:53Z" finished-at="2016-03-06T03:30:53Z">
+        <test-method status="SKIP" signature="setUp()[pri:0, instance:ALLie_AutoTests.TestSuite@6adca536]" name="setUp" is-config="true" duration-ms="0" started-at="2016-03-14T13:50:29Z" finished-at="2016-03-14T13:50:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="SKIP" signature="Ride()[pri:0, instance:ALLie_AutoTests.TestSuite@6adca536]" name="Ride" duration-ms="0" started-at="2016-03-06T03:30:53Z" finished-at="2016-03-06T03:30:53Z">
+        <test-method status="SKIP" signature="Ride()[pri:0, instance:ALLie_AutoTests.TestSuite@6adca536]" name="Ride" duration-ms="2" started-at="2016-03-14T13:50:29Z" finished-at="2016-03-14T13:50:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Ride -->
-        <test-method status="PASS" signature="catchExceptions(org.testng.ITestResult)[pri:0, instance:ALLie_AutoTests.TestSuite@6adca536]" name="catchExceptions" is-config="true" duration-ms="0" started-at="2016-03-06T03:30:53Z" finished-at="2016-03-06T03:30:53Z">
+        <test-method status="PASS" signature="catchExceptions(org.testng.ITestResult)[pri:0, instance:ALLie_AutoTests.TestSuite@6adca536]" name="catchExceptions" is-config="true" duration-ms="0" started-at="2016-03-14T13:50:29Z" finished-at="2016-03-14T13:50:29Z">
           <params>
             <param index="0">
               <value>
@@ -168,15 +167,15 @@ Session ID: 45962493-2b78-4d3d-8bad-f064700012c6
           <reporter-output>
           </reporter-output>
         </test-method> <!-- catchExceptions -->
-        <test-method status="SKIP" signature="setUp()[pri:0, instance:ALLie_AutoTests.TestSuite@6adca536]" name="setUp" is-config="true" duration-ms="0" started-at="2016-03-06T03:30:53Z" finished-at="2016-03-06T03:30:53Z">
+        <test-method status="SKIP" signature="setUp()[pri:0, instance:ALLie_AutoTests.TestSuite@6adca536]" name="setUp" is-config="true" duration-ms="0" started-at="2016-03-14T13:50:29Z" finished-at="2016-03-14T13:50:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="SKIP" signature="Schedul_()[pri:0, instance:ALLie_AutoTests.TestSuite@6adca536]" name="Schedul_" duration-ms="1" started-at="2016-03-06T03:30:53Z" finished-at="2016-03-06T03:30:53Z">
+        <test-method status="SKIP" signature="Schedul_()[pri:0, instance:ALLie_AutoTests.TestSuite@6adca536]" name="Schedul_" duration-ms="8" started-at="2016-03-14T13:50:29Z" finished-at="2016-03-14T13:50:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Schedul_ -->
-        <test-method status="PASS" signature="catchExceptions(org.testng.ITestResult)[pri:0, instance:ALLie_AutoTests.TestSuite@6adca536]" name="catchExceptions" is-config="true" duration-ms="0" started-at="2016-03-06T03:30:53Z" finished-at="2016-03-06T03:30:53Z">
+        <test-method status="PASS" signature="catchExceptions(org.testng.ITestResult)[pri:0, instance:ALLie_AutoTests.TestSuite@6adca536]" name="catchExceptions" is-config="true" duration-ms="0" started-at="2016-03-14T13:50:29Z" finished-at="2016-03-14T13:50:29Z">
           <params>
             <param index="0">
               <value>

@@ -77,7 +77,7 @@ public class BaseTest {
       SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
       String methodName = result.getName();
       //System.out.println(wd.getSessionId());
-      
+     
     	  
     	  try { 
     	  if (wd != null

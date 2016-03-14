@@ -49,7 +49,7 @@ public class Basemethods extends BaseTest {
 		this.name = name;
 		this.keys = keys;
 		this.wd = wd;
-		this.wait = new WebDriverWait(wd, 66);
+		this.wait = new WebDriverWait(wd, 10);
 		this.num = num;
 		
 	}
@@ -65,6 +65,7 @@ public class Basemethods extends BaseTest {
 	   
 	  }
 
+	
 	
 	public void  Get(String keys) throws Exception {
 		driver.get(keys);
@@ -223,9 +224,12 @@ try {
 }
 wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[12]/UIAStaticText[1]")).click();
 		wd.findElement(By.name("REMOVE")).click();
+		TapName("Ok");
 	} catch (Exception e) {
 		
 	}
+	Thread.sleep(5200);
+	WaitName("Side menu button");
 	wd.findElement(By.name("Side menu button")).click();
 	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]")).click();
 	try {
