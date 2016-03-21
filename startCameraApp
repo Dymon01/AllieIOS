@@ -1,0 +1,5 @@
+source ~/.bash_profile 
+                
+adb shell am start com.splinex.streaming/.TwoCamActivity
+
+

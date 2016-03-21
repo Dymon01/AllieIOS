@@ -49,7 +49,8 @@ public class BaseTest {
 		
 	//	capabilities.setCapability("appium-version", "1.0");
 		capabilities.setCapability("platformName", "iOS");
-		//capabilities.setCapability("autoAcceptAlerts", true);
+		//capabilities.setCapability("autoDismissAlerts", true);
+	//	capabilities.setCapability("autoAcceptAlerts", true);
 	//	capabilities.setCapability("waitForAppScript", "$.delay(18000); $.switchTo().alert(); $.defaultButton().tap(); true;");
 		//capabilities.setCapability("platformVersion", "8.3");
 		capabilities.setCapability("deviceName", "iPad Air");
@@ -97,6 +98,12 @@ public class BaseTest {
     	   e.printStackTrace(); 
     	  } finally {
     	  wd.quit();
+    	  
+    	  try {
+			driver.quit(); // web
+		} catch (Exception e) {
+			
+		}
     	  }
   
         }

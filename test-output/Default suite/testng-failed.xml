@@ -11,9 +11,7 @@
       <class name="ALLie_AutoTests.TestSuite">
         <methods>
           <include name="setUp"/>
-          <include name="Ride"/>
           <include name="AccountScreen"/>
-          <include name="Schedul_"/>
           <include name="catchExceptions"/>
         </methods>
       </class> <!-- ALLie_AutoTests.TestSuite -->
