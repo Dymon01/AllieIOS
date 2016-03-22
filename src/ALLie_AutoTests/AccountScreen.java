@@ -69,16 +69,16 @@ public class AccountScreen extends Basemethods{
 		
 	
 	//	RunLog();
-		try {
-			WaitName("LOGIN");
-			String buttonNo = null;
-			do{
-			TapName("NO INTERNET CONNECTION RETRY");
-			buttonNo = GetAttributeMobXpath("name", "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]");
-			}while(buttonNo.equals("Buy new allie"));
-		} catch (Exception e3) {
-			
-		}
+//		try {
+//			WaitName("LOGIN");
+//			String buttonNo = null;
+//			do{
+//			TapName("NO INTERNET CONNECTION RETRY");
+//			buttonNo = GetAttributeMobXpath("name", "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]");
+//			}while(buttonNo.equals("Buy new allie"));
+//		} catch (Exception e3) {
+//			
+//		}
 		
 
 		
@@ -171,7 +171,8 @@ if (!button.equals("LOGIN"))
 			TapName("Cloud");
 			WaitName("REMOVE PLAN");
 			TapName("REMOVE PLAN");
-			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]")).click();
+			TapName("Yes");
+		//	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]")).click();
 			WaitName("Remove ALLie");
 			
 			TapName("Remove ALLie");

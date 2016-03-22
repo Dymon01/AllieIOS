@@ -1,6 +1,7 @@
 source ~/.bash_profile 
 adb shell am force-stop com.splinex.streaming/.TwoCamActivity
-adb shell pm clear com.splinex.streaming                     
+adb shell pm clear com.splinex.streaming   
+adb reboot                  
 adb shell am start com.splinex.streaming/.TwoCamActivity
-adb reboot
+
 
