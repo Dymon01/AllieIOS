@@ -57,19 +57,10 @@ public class AccountScreen extends Basemethods{
 		
 	}
 
-	public void AccountCheck() throws Exception {
-
-		
-//		WebElement menu = driver.findElement(By.xpath("/html/body/div[2]/div[4]/div/div[5]/div/div[1]/ul/li[5]/h3/a")); // the triger event element
-//
-//	    Actions build = new Actions(driver); // heare you state ActionBuider
-//	    build.moveToElement(menu).build().perform(); // Here you perform hover mouse over the needed elemnt to triger the visibility of the hidden
-//	    WebElement m2m= driver.findElement(By.xpath("/html/body/div[2]/div[4]/div/div[5]/div/div[1]/ul/li[5]/ul/li[1]/a/span"));//the previous non visible element
-//	    m2m.click();
-		
-	
+	public void AccountCheck() throws Exception {	
 	//	RunLog();
 //		try {
+//			Thread.sleep(7000);
 //			WaitName("LOGIN");
 //			String buttonNo = null;
 //			do{
@@ -89,8 +80,6 @@ if (!button.equals("LOGIN"))
 	Restore();
 	}
 
-
-
 		int r = 0;
 		do {
 			Registration_Change_Restore_Pass();
@@ -101,7 +90,6 @@ if (!button.equals("LOGIN"))
 			
 			CheckSocialAcc();
 			Thread.sleep(5600);
-			
 			
 			TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
 
@@ -124,25 +112,18 @@ if (!button.equals("LOGIN"))
 //			} catch (Exception e1) {
 //			}
 			
-			
-		//	GetScreenShot("Screenshots/Cam.jpg");
-			
-					
+		//	GetScreenShot("Screenshots/Cam.jpg");		
 					youtube_stream();
-
-
 			
 //		String photo = GetAttributeMobXpath("value", "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[1]");
 //			System.out.println(photo);
 
-			//Snapshot_Gallery();
+			Snapshot_Gallery();
+			
 //			String Gall2 = GetTextMobXpath("//UIAApplication[1]/UIAWindow[1]/UIAStaticText[1]");
 //			System.out.println(Gall2);
 		//	
 
-
-	
-			
 			AddCardinTrialPlan();
 			Sharing();
 
@@ -192,6 +173,7 @@ if (!button.equals("LOGIN"))
 		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]");
 		
 	TapName("Change password");
+	SharingCheckWeb();
 	
 		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[5]/UIAButton[1]");
 

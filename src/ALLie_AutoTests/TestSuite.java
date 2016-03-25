@@ -38,17 +38,17 @@ public class TestSuite extends BaseTest {
 	@Test
 	public void Ride() throws Exception {
 
-		// RideProcess rideProcess = new RideProcess(wd);
-		// rideProcess.Process();
+		 AccountScreen accountScreen = new AccountScreen(file, xpath, name, keys, wd, driver, num);
+		 accountScreen.AccountCheck();
 
 	}
+
 
 	@Test
 	public void Schedul_() throws Exception {
 
-		// Filters_Wishlist_Schedul Filters_Wishlist_Schedul = new
-		// Filters_Wishlist_Schedul(wd);
-		// Filters_Wishlist_Schedul.Schedul();
+		 AccountScreen accountScreen = new AccountScreen(file, xpath, name, keys, wd, driver, num);
+		 accountScreen.AccountCheck();
 		// wd.quit();
 	}
 
