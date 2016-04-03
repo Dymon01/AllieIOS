@@ -70,8 +70,8 @@ public class AccountScreen extends Basemethods{
 //		} catch (Exception e3) {
 //			
 //		}
-		
-
+		Thread.sleep(7000);
+WaitXpath( "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]");
 		
 		String button = GetAttributeMobXpath("name", "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]");
 		// System.out.println(button); //Buy new allie
@@ -82,43 +82,28 @@ if (!button.equals("LOGIN"))
 
 		int r = 0;
 		do {
-			Registration_Change_Restore_Pass();
+		Registration_Change_Restore_Pass();
 		
 		//Thread.sleep(6000);
 		AddCamera();
-			//RunLog();
+	//	RunLog();
 			
 			CheckSocialAcc();
 			Thread.sleep(5600);
 			
 			TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
 
-
-//			try { // other wifi 
-//				TapName("Ok");
-//				//wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]")).click();
-//				TapName("Configure wifi network on your camera");
-//				//wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAPopover[1]/UIAActionSheet[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]")).click();
-//				WaitName("AllieGO 5GHz");
-//				TapName("AllieGO 5GHz");
-//				Thread.sleep(1000);
-//				String Err = GetTextWebXpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIAScrollView[1]/UIAStaticText[2]");
-//				System.out.println(Err);
-//				TapName("Ok");
-//				
-//			//wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]")).click();
-//				TapName("Back button black");
-//				
-//			} catch (Exception e1) {
-//			}
+			//CamSettings();
+			GetScreenShot("Screenshots/Cam.jpg");		
+				//	youtube_stream();
 			
-		//	GetScreenShot("Screenshots/Cam.jpg");		
-					youtube_stream();
+		YTStrm_resolution runres = new YTStrm_resolution(file, xpath, name, keys, wd, driver);	runres.ResCheck();
+		
 			
 //		String photo = GetAttributeMobXpath("value", "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[1]");
 //			System.out.println(photo);
 
-			Snapshot_Gallery();
+		//	Snapshot_Gallery();
 			
 //			String Gall2 = GetTextMobXpath("//UIAApplication[1]/UIAWindow[1]/UIAStaticText[1]");
 //			System.out.println(Gall2);

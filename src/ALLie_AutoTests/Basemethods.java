@@ -161,6 +161,30 @@ public class Basemethods extends BaseTest {
 		wd.findElement(By.name(name)).sendKeys(keys);
 	}
 	
+	public void FPScheck() throws Exception {
+	try {
+		String fotball = wd.findElement(By.name("StreamFPS")).getAttribute("value");
+		System.out.println(fotball);
+	} catch (Exception e1) {}
+	}
+	
+	public void Player_ActivityIndicator() throws Exception {
+	
+	String actval = null;
+	
+	do { 
+		try {
+			actval = GetAttributeMobXpath("value","//UIAApplication[1]/UIAWindow[1]/UIAActivityIndicator[1]");
+			System.out.print(actval);
+		} catch (Exception e) { 
+		}
+	
+	}
+		while ( !actval.equals("0")			
+		
+				);System.out.println("_streaming_");
+	}
+	
 	 public String GenerateCheckDigit(String[] args) {
 		 long l = Long.valueOf("4" + RandomStringUtils.randomNumeric(15));
 	       // long l = 123456789012345L;
@@ -227,7 +251,7 @@ public class Basemethods extends BaseTest {
 	//ClickcssSelector("a.gb_b.gb_Nb");
 	ClickcssSelector("#gb23 > span.gb_3");
 	//WaitXpath("//div[7]/div[3]/div/div[2]/div[1]/div[2]/div/div/div/div[2]/div[1]/div[1]/div/div[3]/div/table/tr/td[1]/div[2]/div[2]/div/div[3]/div/div/div/div/div/div[1]/div[2]/div[1]/table/tbody/tr[1]/td[2]/div/span[2]");
-wd.resetApp();
+
 	Thread.sleep(8000);
 	
 	
@@ -257,9 +281,10 @@ wd.resetApp();
        // dpleamco+18_03_2016_06_48@icrealtech.com
         	while (!p2.equals(mailID+"!"));
         ClickXpath(xpath);
-		
 		CkickSelfTarg("//div[7]/div[3]/div/div[2]/div[1]/div[2]/div/div/div/div[2]/div[1]/div[1]/div/div[2]/div/table/tr/td[1]/div[2]/div[2]/div/div[3]/div/div/div/div/div/div[1]/div[2]/div[7]/div/a[2]");
-	Thread.sleep(6000);
+	Thread.sleep(600);
+	String alert = GetTextMobXpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIAScrollView[1]/UIAStaticText[2]");
+	System.out.println(alert);
 	
 	ClicklinkText("Start Using ALLie");
 	
@@ -268,10 +293,12 @@ wd.resetApp();
 	String mailIDs = GetTextWebXpath("//div[1]/div[1]/div[2]/ul/li[5]/span");
 	//System.out.println(mailIDs);
 		quit();
-
+		
+TapName("Ok");
+//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]
 	
 	
-	TapName("LOGIN");
+	//TapName("LOGIN");
 	TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextField[1]");
 	SendKeysXpath(mailID,
 			"//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextField[1]");
@@ -281,6 +308,7 @@ wd.resetApp();
 	TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAButton[1]");
 	TapName("LOGIN");
 	System.out.println("____LOGIN_Passed____");
+	Thread.sleep(6000);
 	WaitName("Side menu button");
 	wd.findElement(By.name("Side menu button")).click();
 	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]")).click();
@@ -318,15 +346,15 @@ TapName("TextField Account Settings New Password");
 		Thread.sleep(950);
 		String acc = GetAttributeMobXpath("value", "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[2]/UIAStaticText[1]");
 		System.out.println(acc);
-		if (acc.equals("Youtube: dpleamco@icrealtech.cm"))
+		if (!acc.equals("Youtube: dpleamco@icrealtech.cm"))
 		{
 		wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 717); put("y", (double) 160); }});
 		//(JavascriptExecutor)wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", 1); put("touchCount", 1); put("duration", 0.5); put("x", 360); put("y", 318); }});
 		
-			TapName("Unlink");
-
-			Thread.sleep(9500);
-			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 724); put("y", (double) 174); }});
+//			TapName("Unlink");
+//
+//			Thread.sleep(9500);
+//			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 724); put("y", (double) 174); }});
 
 		
 			youtube_login();
@@ -339,69 +367,30 @@ TapName("TextField Account Settings New Password");
 		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]");
 }
 
-	    public void AddCamera() throws Exception {
-		WaitName("Buy new allie");
-		TapName("Add new allie small");
-		TapName("FIND NEW ALLIE");
-		
-		WaitName("Select device");
-		try {
-
-			
-			//TapName("Allie-16155100228");
-			TapName("Allie-16155203625");
-		} catch (Exception e3) {
-			System.out.println("Filed to connect wifi");
-			
-			
-			Runtime.getRuntime().exec(new String[] {"/Users/dmitriy/Documents/workspace/Allie/resetBLE"});
-			Thread.sleep(8600);
-			TapName("Back button black");
-			TapName("FIND NEW ALLIE");
-			
-			WaitName("Select device");
-			Thread.sleep(2800);
-			TapName("Allie-16155203625");
-		}
-		try {//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIATextField[1]
-			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIASecureTextField[1]")).sendKeys("admin");
-			TapXpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]");
-		} catch (Exception e) {
-		}
-		
-//		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
-//			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[4]")).click();
-			Thread.sleep(18000);
-			try {
-				WaitXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
-				TapName("1503-5G");
-				//TapName("1503");
-			} catch (Exception e4) {
-				System.out.println("Filed to connect wifi");
-		//		Runtime.getRuntime().exec(new String[] {"/Users/dmitriy/Documents/workspace/Allie/resetBLE"});
-				setUpWeb(); //WebDriver
-				Get("http://192.168.7.66:4000/index.html");
-			    driver.findElement(By.xpath("//input[@value='Reboot device']")).click();
-				Thread.sleep(8000);
-		//		Runtime.getRuntime().exec(new String[] {"/Users/dmitriy/Documents/workspace/Allie/startCameraApp"});
-			}
-			try {
-				wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIASecureTextField[1]")).sendKeys("splinex271813");
-				TapXpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]");
-			} catch (Exception e) {
-			}
-			Thread.sleep(18600);
-			try {
-				WaitName("SUCCESS!");
-			} catch (Exception e2) {
-				System.out.println("Filed to connect wifi");
-				Runtime.getRuntime().exec(new String[] {"/Users/dmitriy/Documents/workspace/Allie/resetBLE"});
-			}
-			TapName("Side menu button");
-			TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]");
-			System.out.println("____CamAdded____");
-}
+	 
    
+	    public void CamSettings() throws Exception {
+	    	String name = GetTextMobXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[1]");
+			String status = GetTextMobXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[2]");
+			System.out.println(name + " - " + status);
+
+			String cloud = GetTextMobXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[3]");
+			System.out.println("cloud - " + cloud);
+
+	 TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[2]");
+	 wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIATextField[1]")).clear();
+	 
+	 wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIATextField[1]")).sendKeys("ALLie_"+RandomStringUtils.randomAlphabetic(3));
+	 TapName("Information");
+	// wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[10]")).click();
+	 GetScreenShot("Screenshots/CamInfo.jpg");	
+		TapName("Back button black");
+		
+		TapName("Day/Night");
+		TapName("Black arrow rotated");
+		TapName("Orange arrow rotated");
+		
+	    }
 	    public void youtube_login() throws Exception {
 		WaitXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIATextField[1]");
 		wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIATextField[1]")).click();
@@ -442,7 +431,7 @@ TapName("TextField Account Settings New Password");
 
 		int xpd = Integer.parseInt(xp);
 		int ypd = Integer.parseInt(yp);
-		System.out.println(xp + "  " + yp);
+	//	System.out.println(xp + "  " + yp);
 		//wd.context("NATIVE_APP");
 		wd.tap(1, xpd, ypd, 1);
 	
@@ -456,9 +445,17 @@ TapName("TextField Account Settings New Password");
 	    	try {
 				wait.until(ExpectedConditions.elementToBeClickable(By.name("Button stream")));
 			} catch (Exception e) {
-	//			TapXpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]");
-		//			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIASecureTextField[1]")).sendKeys("splinex271813");
-		}
+				System.out.println("Filed to connect wifi");
+				Runtime.getRuntime().exec(new String[] {"/Users/dmitriy/Documents/workspace/Allie/resetBLE"});
+				Thread.sleep(18000);
+//				setUpWeb(); //WebDriver
+//				Get("http://192.168.7.66:4000/index.html");
+//			    driver.findElement(By.xpath("//input[@value='Reboot device']")).click();
+//				Thread.sleep(8000);
+//				quit();
+				Runtime.getRuntime().exec(new String[] {"/Users/dmitriy/Documents/workspace/Allie/startCameraApp"});
+			}
+			
 				GetScreenShot("Screenshots/Cam.jpg");
 			
 			wd.findElement(By.name("Button stream")).click();
@@ -474,23 +471,11 @@ TapName("TextField Account Settings New Password");
 
 	}
 
-	
+	Calendar calendar = Calendar.getInstance();
 	 SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm");
 
 
-	String actval = null;
-	
-//	do { 
-//		try {
-//			actval = GetAttributeMobXpath("value","//UIAApplication[1]/UIAWindow[1]/UIAActivityIndicator[1]");
-//			System.out.print(actval);
-//		} catch (Exception e) { 
-//		}
-//	
-//	}
-//		while ( !actval.equals("0")			
-//		
-//				);
+	 Player_ActivityIndicator();
 	
 //	WaitXpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIATextField[1]");
 		
@@ -535,48 +520,55 @@ ClickXpath("//div[2]/div[4]/div/div[5]/div/div[2]/div[10]/ol/li[1]/div/div[1]/di
 Thread.sleep(2800);//WaitXpath("//div[2]/div[4]/div/div[5]/div[2]/div[1]/div/div[2]/div[2]/div[1]/div/h1/span");
 String Name_stream = GetTextWebXpath("//div[2]/div[4]/div/div[5]/div[2]/div[1]/div/div[2]/div[2]/div[1]/div/h1/span");
 System.out.println(Name_stream);
+String stream_st = GetTextWebXpath(
+		"//div[2]/div[4]/div/div[4]/div[2]/div[2]/div/div[20]/div[2]/div[1]/div/button");
+System.out.println(stream_st);
+
+wd.findElement(By.name("Button pause stream")).click();
+Thread.sleep(3000);
+wd.findElement(By.name("Snapthot player button")).click();
 
 
-
-		wd.findElement(By.name("Button pause stream")).click();
-		Thread.sleep(3000);
-		wd.findElement(By.name("Snapthot player button")).click();
-//		wd.findElement(By.name("Microphone player button off")).click();
+String stream_st2 = GetTextWebXpath(
+		"//div[2]/div[4]/div/div[4]/div[2]/div[2]/div/div[13]/div[2]/div/h1");
+System.out.println(stream_st2);
 
 		wd.findElement(By.name("Button resume stream")).click();
 		wd.findElement(By.name("Share player button")).click();
-		Thread.sleep(5000);
+		Thread.sleep(50);
+		wd.findElement(By.name("Mail")).click();
+		Thread.sleep(2050);
+		wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 327); put("y", (double) 577); }});
+		wd.findElement(By.name("toField")).sendKeys("dpleamco@icrealtech.com");
+		wd.findElement(By.name("subjectField")).sendKeys("liveYT");
 		try {
-			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAPopover[1]/UIAActivityView[1]/UIAActionSheet[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[3]/UIACollectionView[1]/UIACollectionCell[2]")).click();
+			String links = GetAttributeMobXpath("value", "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextView[3]");
+			System.out.println(links);
 		} catch (Exception e) {
-	
 		}
-				wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAPopover[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]")).click();
-TapName("Done");
-wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 399); put("y", (double) 941); }});
-					//crash
-				//wd.findElement(By.name("Camera vr")).click();
-			//	
+			
+		
+		wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[3]")).click();
 
+		String stream_st3 = GetTextWebXpath(
+				"//div[2]/div[4]/div/div[4]/div[2]/div[2]/div/div[20]/div[2]/div[1]/div/button");
+		System.out.println(stream_st3);
 		
 				TapName("Button stream stop");
 				quit(); // web
-				
-			//	WaitName("Gallery player button");
-				Thread.sleep(1000);
-			//	TapName("Gallery player button");
+
 
 
 	    }
 	  
 	    public void Snapshot_Gallery() throws Exception {
-		try {
+	    	WaitName("Back button black");
 			WaitName("Snapthot player button");
 			TapName("Snapthot player button");
 			TapName("Gallery player button");
 			WaitName("Back button black");
 				//TapName("Back button black");
-				Thread.sleep(1000);
+				Thread.sleep(2500);
 			TapXpath("//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[1]");
 			TapName("Gallery remove video");
 TapName("Cancel");
@@ -588,67 +580,91 @@ TapName("Cancel");
 			//TapXpath("//UIAApplication[1]/UIAWindow[5]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]");
 			TapName("Yes");
 			TapName("Back button black");
-		} catch (Exception e1) {
-		}
+
 	    }
 	    
 	    public void AddCardinTrialPlan() throws Exception {
-	    	Thread.sleep(4000);
-			TapName("Record player button");
-			TapName("OK");
-			WaitXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAPageIndicator[1]");
-			TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAPageIndicator[1]");
-			TapName("SELECT PLAN");
-		// add card
-		Thread.sleep(1000);
-		WaitXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[1]");
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[1]");
-		//SendKeysXpath(num,"//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[1]");
-		SendKeysXpath("4716009218642732","//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[1]");
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[2]");
-		try {
-			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 393); put("y", (double) 983); }});
 
-			SendKeysXpath("Apr","//UIAApplication[1]/UIAWindow[4]/UIAPicker[1]/UIAPickerWheel[1]");
-		} catch (Exception e) {}
+
 			try {
-				SendKeysXpath("Apr","//UIAApplication[1]/UIAWindow[5]/UIAPicker[1]/UIAPickerWheel[1]");
+				WaitXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
+				TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
 			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-		
 			}
-		
-		
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[4]");
-		try {
-			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 393); put("y", (double) 983); }});
-
-			SendKeysXpath("2017","//UIAApplication[1]/UIAWindow[4]/UIAPicker[1]/UIAPickerWheel[1]");
-		} catch (Exception e) {}
+	    	//Player_ActivityIndicator();
+	    	
+			TapName("Record player button");
+			
 			try {
-				SendKeysXpath("2017","//UIAApplication[1]/UIAWindow[5]/UIAPicker[1]/UIAPickerWheel[1]");
+				WaitName("OK");
+				TapName("OK");
+				Thread.sleep(1700);
+				WaitXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAPageIndicator[1]");
+				TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAPageIndicator[1]");
+				TapName("SELECT PLAN");
+// add card
+Thread.sleep(1000);
+WaitXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[1]");
+TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[1]");
+//SendKeysXpath(num,"//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[1]");
+SendKeysXpath("4716009218642732","//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[1]");
+TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[2]");
+try {
+				wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 393); put("y", (double) 983); }});
+
+				SendKeysXpath("Apr","//UIAApplication[1]/UIAWindow[4]/UIAPicker[1]/UIAPickerWheel[1]");
+} catch (Exception e) {}
+				try {
+					SendKeysXpath("Apr","//UIAApplication[1]/UIAWindow[5]/UIAPicker[1]/UIAPickerWheel[1]");
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+
+				}
+
+
+TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[4]");
+try {
+				wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 393); put("y", (double) 983); }});
+
+				SendKeysXpath("2017","//UIAApplication[1]/UIAWindow[4]/UIAPicker[1]/UIAPickerWheel[1]");
+} catch (Exception e) {}
+				try {
+					SendKeysXpath("2017","//UIAApplication[1]/UIAWindow[5]/UIAPicker[1]/UIAPickerWheel[1]");
+				} catch (Exception e) {
+					
+				}
+
+TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[3]");
+SendKeysXpath("123","//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[3]");
+
+TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIATextField[1]");
+SendKeysXpath("Dmitriy","//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIATextField[1]");
+TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIATextField[2]");
+SendKeysXpath("Pleamco","//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIATextField[2]");
+TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIATextField[3]");
+SendKeysXpath("32568","//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIATextField[3]");
+TapName("SUBMIT");
+
+Thread.sleep(12900);
+System.out.println("____CardAdded____");
 			} catch (Exception e) {
-				
+				try {
+					TapName("Back button black");
+				} catch (Exception e1) {
+			
+				}
+				System.out.println("???CardNotAdded???");
 			}
-		
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[3]");
-		SendKeysXpath("123","//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[3]");
-		
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIATextField[1]");
-		SendKeysXpath("Dmitriy","//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIATextField[1]");
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIATextField[2]");
-		SendKeysXpath("Pleamco","//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIATextField[2]");
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIATextField[3]");
-		SendKeysXpath("32568","//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIATextField[3]");
-		TapName("SUBMIT");
-		
-		Thread.sleep(12900);
-		System.out.println("____CardAdded____");
+
 	    }
 	    
 	    public void Sharing() throws Exception {
-	    	Thread.sleep(5900);
-		wd.findElement(By.name("Record player button")).click();
+	    	Thread.sleep(7900);
+		try {
+			wd.findElement(By.name("Record player button")).click();
+		} catch (Exception e2) {
+		
+		}
 		Thread.sleep(9900);
 		//GetScreenShot("Screenshots/CamRec.jpg");
 		wd.findElement(By.name("Stop player button")).click();
@@ -657,30 +673,31 @@ TapName("Cancel");
 		wd.findElement(By.name("Share player button")).click();
 		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextField[1]");
 		
-		
+		Calendar calendar = Calendar.getInstance();	
 		 SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm");
 
 		SendKeysXpath("_sh_" +formater.format(calendar.getTime()),"//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextField[1]");
 		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextView[1]");
-		SendKeysXpath("Comment" +(calendar.getTime()),"//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextView[1]");
+		SendKeysXpath("Comment___" +(calendar.getTime()),"//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextView[1]");
 	
 	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextField[1]")).click();
 	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextView[1]")).click();
 	wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 720); put("y", (double) 513); }});
-
+	Thread.sleep(5900);
 	try {
 			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIALink[8]")).click();
 			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIATextField[1]")).click();
 			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIATextField[1]")).sendKeys("dmitriip@stelar.md");
 			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIASecureTextField[1]")).click();
 			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIASecureTextField[1]")).sendKeys("dymon01");
-//	wd.findElement(By.name("Перейти")).click();
+//	wd.findElement(By.name("Перейти")).click();
 			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 375); put("y", (double) 410); }});
 			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 371); put("y", (double) 864); }});
 			wd.findElement(By.name("OK")).click();
 		} catch (Exception e1) {
 
 		}
+	
 		wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 405); put("y", (double) 987); }});
 		wd.findElement(By.name("SHARE")).click();
 		//xpath: //UIAApplication[1]/UIAWindow[1]/UIAStaticText[1]
@@ -714,6 +731,22 @@ TapName("Cancel");
 		WaitName("SUCCESS!");
 		
 		WaitName("Back button black");
+		
+		TapName("SEND TO FRIEND");
+		Thread.sleep(1200);
+		//wd.switchTo().alert().accept();
+		try {
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]")).click();
+		} catch (Exception e) {
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[6]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]")).click();
+		}
+		
+		wd.findElement(By.name("toField")).sendKeys("dpleamco@icrealtech.com");
+		String links = GetAttributeMobXpath("value", "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextView[2]");
+		System.out.println(links);
+		Thread.sleep(19900);
+		
+		wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[2]/UIAButton[3]")).click();
 		TapName("Back button black");
 		System.out.println("____Sharing_Done____");
 	
@@ -768,7 +801,7 @@ quit();
 		
 
 	
-		wd.findElement(By.name("Button My ALLies Edit")).click();
+	wd.findElement(By.name("Button My ALLies Edit")).click();
 wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 440); put("y", (double) 187); }});
 		
 try {
@@ -830,5 +863,86 @@ wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATab
 	
 }
 
+	    public void AddCamera() throws Exception {
+	    	Thread.sleep(4600);
+		WaitName("Buy new allie");
+		TapName("Add new allie small");
+		TapName("FIND NEW ALLIE");
+		
+		WaitName("Select device");
+		try {
+
+			
+			TapName("Allie-16155100228");
+			//TapName("Allie-16155203625");
+		} catch (Exception e3) {
+			System.out.println("Filed to connect wifi");
+			
+			
+			Runtime.getRuntime().exec(new String[] {"/Users/dmitriy/Documents/workspace/Allie/startCameraApp"});
+				Thread.sleep(8600);
+			
+			TapName("Back button black");
+			TapName("FIND NEW ALLIE");
+		
+			WaitName("Select device");
+			Thread.sleep(2800);
+			//TapName("Allie-16155203625");
+			TapName("Allie-16155100228");
+		}
+		try {//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIATextField[1]
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIASecureTextField[1]")).sendKeys("admin");
+			TapXpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]");
+		} catch (Exception e) {
+		}
+		
+//		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
+//			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[4]")).click();
+			Thread.sleep(18000);
+			try {
+				WaitXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
+				TapName("1503-5G");
+				//TapName("1503");
+			} catch (Exception e4) {
+				try {
+					wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIASecureTextField[1]")).sendKeys("splinex271813");
+					TapXpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]");
+					TapName("1503-5G");
+				} catch (Exception e) {
+				}
+				System.out.println("Filed to connect wifi");
+				Runtime.getRuntime().exec(new String[] {"/Users/dmitriy/Documents/workspace/Allie/resetBLE"});
+				Thread.sleep(18000);
+//				setUpWeb(); //WebDriver
+//				Get("http://192.168.7.92:4000/index.html");
+//			    driver.findElement(By.xpath("//input[@value='Reboot device']")).click();
+//				Thread.sleep(8000);
+//				quit();
+
+				Runtime.getRuntime().exec(new String[] {"/Users/dmitriy/Documents/workspace/Allie/startCameraApp"});
+		
+				wd.resetApp();
+				wd.findElement(By.name("Side menu button")).click();
+				wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]")).click();
+				wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[5]")).click();
+			
+				
+			}
+			try {
+				wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIASecureTextField[1]")).sendKeys("splinex271813");
+				TapXpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]");
+			} catch (Exception e) {
+			}
+			Thread.sleep(18600);
+			try {
+				WaitName("SUCCESS!");
+			} catch (Exception e2) {
+				System.out.println("Filed to connect wifi");
+				Runtime.getRuntime().exec(new String[] {"/Users/dmitriy/Documents/workspace/Allie/resetBLE"});
+			}
+			TapName("Side menu button");
+			TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]");
+			System.out.println("____CamAdded____");
+}
 
 }

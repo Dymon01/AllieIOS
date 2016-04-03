@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -35,24 +36,23 @@ public class BaseTest {
 	protected String keys;
 	protected String file;
 	protected String num;
-  public Calendar calendar = Calendar.getInstance();
-  public SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm");
+
 	@BeforeMethod
 	
 	public Object setUp() throws Exception {
-
-	
-	
-		
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		Thread.sleep(2000);
 		
-	//	capabilities.setCapability("appium-version", "1.0");
+		
+		capabilities.setCapability("appium-version", "1.0");
 		capabilities.setCapability("platformName", "iOS");
-		//capabilities.setCapability("autoDismissAlerts", true);
-	//	capabilities.setCapability("autoAcceptAlerts", true);
-	//	capabilities.setCapability("waitForAppScript", "$.delay(18000); $.switchTo().alert(); $.defaultButton().tap(); true;");
-		//capabilities.setCapability("platformVersion", "8.3");
+//	capabilities.setCapability("autoDismissAlerts", true);
+		//capabilities.setCapability("autoAcceptAlerts", true);
+	//capabilities.setCapability("waitForAppScript", "$.delay(180000); $.switchTo().alert(); $.defaultButton().tap(); true;");
+	//capabilities.setCapability("waitForAppScript", "$.delay(30000); UIATarget.localTarget().frontMostApp().alert(); $.acceptAlert(); true");
+		capabilities.setCapability("waitForAppScript", "$.delay(30000); $.acceptAlert()");
+		capabilities.setCapability("sendKeyStrategy", "grouped");
+		capabilities.setCapability("newCommandTimeout", 999999);
+		capabilities.setCapability("platformVersion", "8.2");
 		capabilities.setCapability("deviceName", "iPad Air");
 		capabilities.setCapability("app","com.icrtech.allie");
 		wd = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"),	capabilities);
@@ -61,19 +61,22 @@ public class BaseTest {
 		return wd;
 	}
   
-	public Object WebsetUp() throws Exception {
-//	    driver = new SafariDriver();
-//	    //driver = new FirefoxDriver();
-//	    wait = new WebDriverWait(driver, 10);
-//	    //driver.manage().window().setSize(new Dimension(1180, 820));
-//	    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	    return driver;
-	  }
+//	public Object WebsetUp() throws Exception {
+////	    driver = new SafariDriver();
+////	    //driver = new FirefoxDriver();
+////	    wait = new WebDriverWait(driver, 10);
+////	    //driver.manage().window().setSize(new Dimension(1180, 820));
+////	    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//	    return driver;
+//	  }
 
 	
   @AfterMethod
   (alwaysRun=true)
   public void catchExceptions(ITestResult result) throws InterruptedException, IOException{
+	  
+
+	  
     Calendar calendar = Calendar.getInstance();
       SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
       String methodName = result.getName();
@@ -91,12 +94,18 @@ public class BaseTest {
         //Copy the file to screenshot folder
         FileUtils.copyFile(screenshot, testScreenShot);  
         
+        try {
+        	wd.switchTo().alert().accept();
+        } catch (Exception e1) {
+		}
         }
       } 
       
        catch (Exception e) {
     	   e.printStackTrace(); 
     	  } finally {
+    		  
+    		
     	  wd.quit();
     	  
     	  try {

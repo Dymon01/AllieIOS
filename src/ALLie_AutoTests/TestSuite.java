@@ -26,14 +26,11 @@ public class TestSuite extends BaseTest {
 //
 //	}
 	
-	@Test
-	public void AccountScreen() throws Exception {
-	
-	
-			 AccountScreen accountScreen = new AccountScreen(file, xpath, name, keys, wd, driver, num);
-			 accountScreen.AccountCheck();
-
-	}
+//	@Test
+//	public void AccountScreen() throws Exception {	
+//	YTStrm_resolution accountScreen = new YTStrm_resolution(file, xpath, name, keys, wd, driver, num);
+//	 accountScreen.ResCheck();
+//	}
 
 	@Test
 	public void Ride() throws Exception {
@@ -47,9 +44,17 @@ public class TestSuite extends BaseTest {
 	@Test
 	public void Schedul_() throws Exception {
 
-		 AccountScreen accountScreen = new AccountScreen(file, xpath, name, keys, wd, driver, num);
+	 AccountScreen accountScreen = new AccountScreen(file, xpath, name, keys, wd, driver, num);
 		 accountScreen.AccountCheck();
 		// wd.quit();
 	}
 
+	@Test
+	public void Schedul_2() throws Exception {
+
+	 AccountScreen accountScreen = new AccountScreen(file, xpath, name, keys, wd, driver, num);
+		 accountScreen.AccountCheck();
+		// wd.quit();
+	}
+	
 }
