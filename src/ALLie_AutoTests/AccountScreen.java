@@ -88,27 +88,18 @@ if (!button.equals("LOGIN"))
 		AddCamera();
 	//	RunLog();
 			
-			CheckSocialAcc();
+			CheckSocialAcc(r);
 			Thread.sleep(5600);
 			
 			TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
 
 			//CamSettings();
 			GetScreenShot("Screenshots/Cam.jpg");		
-				//	youtube_stream();
+				//	youtube_stream();	
+		//YTStrm_resolution runres = new YTStrm_resolution(file, xpath, name, keys, wd, driver);	runres.ResCheck();
+	
+			Snapshot_Gallery();
 			
-		YTStrm_resolution runres = new YTStrm_resolution(file, xpath, name, keys, wd, driver);	runres.ResCheck();
-		
-			
-//		String photo = GetAttributeMobXpath("value", "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[1]");
-//			System.out.println(photo);
-
-		//	Snapshot_Gallery();
-			
-//			String Gall2 = GetTextMobXpath("//UIAApplication[1]/UIAWindow[1]/UIAStaticText[1]");
-//			System.out.println(Gall2);
-		//	
-
 			AddCardinTrialPlan();
 			Sharing();
 
@@ -119,31 +110,26 @@ if (!button.equals("LOGIN"))
 				TapName("Back button black");
 			} catch (Exception e) {
 			}
+
+				TapName("Side menu button");
+			TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]");
 			
-		//	TapXpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]");
-			
-			//			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]")).click();
-//			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]")).click();
-//			TapName("Configure wifi network on your camera");
-//			//wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAPopover[1]/UIAActionSheet[1]/UIACollectionView[1]/UIACollectionCell[1]")).click();
-//			TapName("AllieGO 5GHz");
-//			
-			
+			WaitName("Button My ALLies Edit");
 			TapName("Button My ALLies Edit");
 			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 414); put("y", (double) 199); }});
 			//TapName("Camera open settings");
 			String BLEpass = GetTextMobXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[11]/UIAStaticText[2]");
 			System.out.println(BLEpass);
 			TapName("Cloud");
-			WaitName("REMOVE PLAN");
-			TapName("REMOVE PLAN");
-			TapName("Yes");
-		//	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]")).click();
-			WaitName("Remove ALLie");
-			
-			TapName("Remove ALLie");
-			//wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[12]")).click();
-			
+			try {
+				WaitName("REMOVE PLAN");
+				TapName("REMOVE PLAN");
+				TapName("Yes");
+			} catch (Exception e1) {
+				TapName("Back button black");
+			}
+		WaitName("Remove ALLie");
+		TapName("Remove ALLie");
 			WaitName("ARE YOU SURE?");
 			TapName("REMOVE");
 			try {
@@ -151,8 +137,6 @@ if (!button.equals("LOGIN"))
 			} catch (Exception e) {
 
 			}
-	//	} catch (Exception e) {		}
-		
 
 		TapName("Side menu button");
 		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]");
@@ -162,6 +146,8 @@ if (!button.equals("LOGIN"))
 	
 		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[5]/UIAButton[1]");
 
+		
+		
 		
 		//	wd.resetApp();
 		r++;	System.out.println(r);

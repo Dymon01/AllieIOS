@@ -6,11 +6,15 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -41,8 +45,7 @@ public class BaseTest {
 	
 	public Object setUp() throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		
-		
+
 		capabilities.setCapability("appium-version", "1.0");
 		capabilities.setCapability("platformName", "iOS");
 //	capabilities.setCapability("autoDismissAlerts", true);

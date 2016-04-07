@@ -1,0 +1,7 @@
+source ~/.bash_profile 
+adb disconnect 
+adb tcpip 5555
+adb connect 192.168.7.92
+
+
+
