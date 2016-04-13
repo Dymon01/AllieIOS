@@ -38,8 +38,13 @@ public class TestSuite extends BaseTest {
 
 	@Test
 	public void Ride() throws Exception {
-		//wd.rotate (ScreenOrientation.LANDSCAPE);
-		 AccountScreen accountScreen = new AccountScreen(file, xpath, name, keys, wd, driver, num);
+		int r = 0;
+		do {
+		SecurityMode checksecurity = new SecurityMode(file, xpath, name, keys, wd, driver); checksecurity.SecMode();
+		r++;	System.out.println(r);
+		
+	} while (r < 90);
+		 AccountScreen accountScreen = new AccountScreen(file, xpath, name, keys, wd, driver);
 		 accountScreen.AccountCheck();
 
 	}
@@ -48,7 +53,7 @@ public class TestSuite extends BaseTest {
 	@Test
 	public void Schedul_() throws Exception {
 
-	 AccountScreen accountScreen = new AccountScreen(file, xpath, name, keys, wd, driver, num);
+	 AccountScreen accountScreen = new AccountScreen(file, xpath, name, keys, wd, driver);
 		 accountScreen.AccountCheck();
 		// wd.quit();
 	}
@@ -56,7 +61,7 @@ public class TestSuite extends BaseTest {
 	@Test
 	public void Schedul_2() throws Exception {
 
-	 AccountScreen accountScreen = new AccountScreen(file, xpath, name, keys, wd, driver, num);
+	 AccountScreen accountScreen = new AccountScreen(file, xpath, name, keys, wd, driver);
 		 accountScreen.AccountCheck();
 		// wd.quit();
 	}

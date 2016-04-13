@@ -38,7 +38,7 @@ public class Basemethods extends BaseTest {
 	protected String num;
 	protected static WebDriver driver;
 	  protected  WebDriverWait wait;
-	public Basemethods(String file, String xpath,String name, String  keys, IOSDriver wd, WebDriver driver, String num ) {
+	public Basemethods(String file, String xpath,String name, String  keys, IOSDriver wd, WebDriver driver ) {
 	super();	
 		this.file = file;
 		this.xpath = xpath;
@@ -46,7 +46,7 @@ public class Basemethods extends BaseTest {
 		this.keys = keys;
 		this.wd = wd;
 		this.wait = new WebDriverWait(wd, 10);
-		this.num = num;
+		
 		
 	}
 	
@@ -143,6 +143,9 @@ public class Basemethods extends BaseTest {
 		}  
 	  }
 	
+	public String GetAttributeMobName(String name, String xpath) throws Exception {
+		 return wd.findElement(By.name(xpath)).getAttribute(name);
+	}
 	public String GetAttributeMobXpath(String name, String xpath) throws Exception {
 	 return wd.findElement(By.xpath(xpath)).getAttribute(name);
 	}
@@ -355,7 +358,7 @@ public class Basemethods extends BaseTest {
 		String acc = GetAttributeMobXpath("value", "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[2]/UIAStaticText[1]");
 		//System.out.println(acc);
 		if (!acc.equals("Youtube: dpleamco@icrealtech.cm"))
-		{ if (r % 2==0) {
+		{ if (r % 1==0) {
 		wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 717); put("y", (double) 160); }});
 			youtube_login();
 		}else{System.out.println("round-"+r);}
@@ -623,13 +626,21 @@ TapName("Cancel");
 			TapName("Button My ALLies Edit");
 		
 			TapName("Button My ALLies Settings");
-			TapName("Edit");
-			TapName("Edit_control");
-			TapName("DELETE");
-			TapName("Yes");
+			try {
+				TapName("Edit");
+				TapName("Edit_control");
+				TapName("DELETE");
+				TapName("Yes");
+			} catch (Exception e1) {
+
+			}
 			//GetScreenShot("Screenshots/Gallery.jpg");	
-			String items = GetAttributeMobXpath("name", "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIAStaticText[2]");
-			System.out.println(items);
+			try {
+				String items = GetAttributeMobXpath("name", "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIAStaticText[2]");
+				System.out.println(items);
+			} catch (Exception e) {
+
+			}
 
 			TapName("Back button black");
 			System.out.println("__Snapshot_Gallery_Pass__");
@@ -654,6 +665,7 @@ TapName("Cancel");
 				TapName("SELECT PLAN");
 // add card
 				AddCard();
+				
 			} catch (Exception e) {
 			}
 		
@@ -663,15 +675,13 @@ TapName("Cancel");
 	    
 		public void AddCard() throws Exception {
 		Thread.sleep(1000);
-		WaitXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[1]");
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[1]");
-	
+		WaitName("TextField Billing Card Number");
+		TapName("TextField Billing Card Number");
 		List<String> list = Files.readAllLines(new File("values/CardNum.txt").toPath(), Charset.defaultCharset() );
 	  	String[] parts = (String.valueOf(list).replace("[", "").replace("]", "")).split(", ");
 	    String Card = parts[Integer.valueOf(RandomStringUtils.randomNumeric(1))];
-	    
-		SendKeysXpath(Card,"//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[1]");
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[2]");
+	    SendKeysName(Card, "TextField Billing Card Number");
+	    TapName("TextField Billing Card Month");
 		try {
 			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 393); put("y", (double) 983); }});
 
@@ -683,9 +693,7 @@ TapName("Cancel");
 				// TODO Auto-generated catch block
 		
 			}
-		
-		
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[4]");
+			TapName("TextField Billing Card Year");
 		try {
 			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 393); put("y", (double) 983); }});
 
@@ -696,16 +704,14 @@ TapName("Cancel");
 			} catch (Exception e) {
 				
 			}
-		
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[3]");
-		SendKeysXpath("123","//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIATextField[3]");
-		
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIATextField[1]");
-		SendKeysXpath("Dmitriy","//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIATextField[1]");
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIATextField[2]");
-		SendKeysXpath("Pleamco","//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIATextField[2]");
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIATextField[3]");
-		SendKeysXpath("32568","//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIATextField[3]");
+			TapName("TextField Billing Card CVC");
+			 SendKeysName("123", "TextField Billing Card CVC");
+			 TapName("TextField Billing First Name");
+		 SendKeysName("Dmitriy", "TextField Billing First Name");
+		 TapName("TextField Billing Last Name");
+		 SendKeysName("Pleamco", "TextField Billing Last Name");
+		 TapName("TextField Billing Zip");
+		 SendKeysName("32568", "TextField Billing Zip");
 		TapName("SUBMIT");
 		}
 		
@@ -713,6 +719,7 @@ TapName("Cancel");
 	    public void Sharing() throws Exception {
 	    	Thread.sleep(5900);
 		try {
+			Player_ActivityIndicator();
 			wd.findElement(By.name("Record player button")).click();
 		} catch (Exception e2) {
 			System.out.println("____CardAddFailed____");
@@ -806,18 +813,20 @@ TapName("Cancel");
 			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]")).click();
 		} catch (Exception e) {
 		
-		
-		
-			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[6]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]")).click();
+			try {
+				wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[6]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]")).click();
+			} catch (Exception e1) {
+			
+			}
 	
 		
 		}
 		
-		wd.findElement(By.name("toField")).sendKeys("dpleamco@icrealtech.com");
-		String links = GetAttributeMobXpath("value", "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextView[2]");
+		wd.findElement(By.name("toField")).sendKeys("dpleamco@icrealtech.com");//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextView[1]
+		String links = GetAttributeMobName("value", "Message body");
 		System.out.println(links);
-		Thread.sleep(19900);
-		
+		Thread.sleep(1900);
+	  TapName("return");
 		wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[2]/UIAButton[3]")).click();
 		TapName("Back button black");
 		TapName("Back button black");
@@ -825,15 +834,21 @@ TapName("Cancel");
 		TapName("Edit");
 		TapName("Edit_control");
 	
-		wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAImage[2]")).click();
+		try {
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAImage[2]")).click();
+		} catch (Exception e1) {
+		}
 		TapName("DELETE");
 		TapName("Yes");
-		TapName("Edit");
-		wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAButton[1]")).click();
-		wd.findElement(By.name("Delete")).click();
-		String Gallery_no_items = GetAttributeMobXpath("name", "//UIAApplication[1]/UIAWindow[1]/UIAImage[2]");
+
+		String Gallery_no_items = GetAttributeMobXpath("value", "//UIAApplication[1]/UIAWindow[1]/UIAImage[2]");
 		System.out.println(Gallery_no_items);
-		
+		try {
+			String items = GetAttributeMobXpath("name", "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIAStaticText[2]");
+			System.out.println(items);
+		} catch (Exception e) {
+
+		}
 		System.out.println("____Sharing_Done____");
 	
 	    }

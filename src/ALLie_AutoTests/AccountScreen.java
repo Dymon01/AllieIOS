@@ -45,8 +45,8 @@ public class AccountScreen extends Basemethods{
 	 private WebDriver driver;
 	
 	
-	public AccountScreen(String file, String xpath,String name, String  keys, IOSDriver wd, WebDriver driver, String num) {
-		super(file, xpath, name, keys, wd, driver, num );	
+	public AccountScreen(String file, String xpath,String name, String  keys, IOSDriver wd, WebDriver driver) {
+		super(file, xpath, name, keys, wd, driver );	
 		this.file = file;
 		this.xpath = xpath;
 		this.name = name;
@@ -93,10 +93,10 @@ if (!button.equals("LOGIN"))
 			
 			TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
 
-			//CamSettings();
+			CamSettings();
 			GetScreenShot("Screenshots/Cam.jpg");		
 				//	youtube_stream();	
-		//YTStrm_resolution runres = new YTStrm_resolution(file, xpath, name, keys, wd, driver);	runres.ResCheck();
+	//	YTStrm_resolution runres = new YTStrm_resolution(file, xpath, name, keys, wd, driver);	runres.ResCheck();
 	
 			Snapshot_Gallery();
 			
@@ -110,9 +110,12 @@ if (!button.equals("LOGIN"))
 				TapName("Back button black");
 			} catch (Exception e) {
 			}
-
+			
+			
+			
 				TapName("Side menu button");
 			TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]");
+			SecurityMode checksecurity = new SecurityMode(file, xpath, name, keys, wd, driver); checksecurity.SecMode();
 			
 			WaitName("Button My ALLies Edit");
 			TapName("Button My ALLies Edit");

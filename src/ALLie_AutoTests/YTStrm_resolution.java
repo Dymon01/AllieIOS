@@ -45,7 +45,7 @@ public class YTStrm_resolution extends Basemethods {
 	private WebDriver driver;
 
 	public YTStrm_resolution(String file, String xpath, String name, String keys, IOSDriver wd, WebDriver driver) {
-		super(file, xpath, name, keys, wd, driver, keys);
+		super(file, xpath, name, keys, wd, driver);
 		this.file = file;
 		this.xpath = xpath;
 		this.name = name;
@@ -58,7 +58,7 @@ public class YTStrm_resolution extends Basemethods {
 	
 	public void ResCheck() throws Exception {
 		//GetScreenShot("Screenshots/CamList.jpg");
-		CamSettings();
+		//CamSettings();
 
 		String button = GetAttributeMobXpath("name", "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]");
 		// System.out.println(button); //Buy new allie
@@ -184,7 +184,20 @@ String namest = "Allie_Live_" + formater.format(calendar.getTime());
 			Thread.sleep(6050);
 			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 327); put("y", (double) 577); }});
 			wd.findElement(By.name("toField")).sendKeys("dpleamco@icrealtech.com");
-			wd.findElement(By.name("subjectField")).sendKeys(namest);
+			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 327); put("y", (double) 577); }});
+			try {
+				TapName("return");
+			} catch (Exception e3) {
+			
+			}
+			Thread.sleep(600);
+			
+			try {
+				wd.findElement(By.name("subjectField")).sendKeys(namest);
+			} catch (Exception e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
 			String link = null;
 			try {
 				String links = GetAttributeMobXpath("value", "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextView[3]");        	
