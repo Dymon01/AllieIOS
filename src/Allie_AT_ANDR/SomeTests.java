@@ -1,7 +1,8 @@
-package ALLie_AutoTests;
+package Allie_AT_ANDR;
 
 import static org.junit.Assert.assertTrue;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 
 import java.io.File;
@@ -18,12 +19,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.google.common.primitives.Chars;
 
-public class SomeTests extends Basemethods{
+public class SomeTests extends ANDR_Basemethods{
 
-	private IOSDriver wd;
+	private AndroidDriver wd;
 	private WebDriverWait wait;
 
-	public SomeTests(String file, String xpath,String name, String  keys, IOSDriver wd ) {
+	public SomeTests(String file, String xpath,String name, String  keys, AndroidDriver wd ) {
 
 		super(file, xpath, name, keys, wd, driver );	
 

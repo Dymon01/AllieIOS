@@ -3,20 +3,19 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test verbose="2" name="Default test">
     <classes>
-      <class name="ALLie_AutoTests.TestSuite"/>
+      <class name="Allie_AT_ANDR.Andr_TestSuite"/>
     </classes>
   </test> <!-- Default test -->
   <test name="Default test(failed)">
     <classes>
-      <class name="ALLie_AutoTests.TestSuite">
+      <class name="Allie_AT_ANDR.Andr_TestSuite">
         <methods>
           <include name="setUp"/>
-          <include name="Ride"/>
           <include name="Schedul_2"/>
-          <include name="Schedul_"/>
           <include name="catchExceptions"/>
+          <include name="Schedul_"/>
         </methods>
-      </class> <!-- ALLie_AutoTests.TestSuite -->
+      </class> <!-- Allie_AT_ANDR.Andr_TestSuite -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

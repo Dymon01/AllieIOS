@@ -1,4 +1,4 @@
-package ALLie_AutoTests;
+package Allie_AT_ANDR;
 
 import static org.junit.Assert.assertEquals;
 
@@ -39,7 +39,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SecurityMode extends Basemethods {
+public class SecurityMode extends ANDR_Basemethods {
 
 	private IOSDriver wd;
 	private WebDriverWait wait;

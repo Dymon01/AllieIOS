@@ -1,4 +1,4 @@
-package ALLie_AutoTests;
+package Allie_AT_ANDR;
 import java.awt.Point;
 import java.io.File;
 import java.nio.charset.Charset;
@@ -26,11 +26,12 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 
 
 
-public class Basemethods extends BaseTest {
+public class ANDR_Basemethods extends ANDR_BaseTest {
 	protected String name;
 	protected String xpath;
 	protected String keys;
@@ -38,7 +39,7 @@ public class Basemethods extends BaseTest {
 	protected String num;
 	protected static WebDriver driver;
 	  protected  WebDriverWait wait;
-	public Basemethods(String file, String xpath,String name, String  keys, IOSDriver wd, WebDriver driver ) {
+	public ANDR_Basemethods(String file, String xpath,String name, String  keys, AndroidDriver wd, WebDriver driver ) {
 	super();	
 		this.file = file;
 		this.xpath = xpath;
@@ -150,6 +151,11 @@ public class Basemethods extends BaseTest {
 	public String GetAttributeMobXpath(String name, String xpath) throws Exception {
 	 return wd.findElement(By.xpath(xpath)).getAttribute(name);
 	}
+	
+	public String GetIDMobXpath(String xpath) throws Exception {
+		 return wd.findElement(By.xpath(xpath)).getId();
+		}
+	
 	public String GetTextMobXpath(String xpath) throws Exception {
 		return wd.findElement(By.xpath(xpath)).getText();
 	  }
@@ -161,6 +167,19 @@ public class Basemethods extends BaseTest {
 
 
 	}
+	
+	public void TapID(String name) throws Exception {
+		 wd.findElement(By.id(name)).click();
+
+
+	}
+	
+	public void WaitID(String name) throws Exception {
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.id(name)));
+
+
+	}
+	
 	public void WaitXpath(String xpath) throws Exception {
 	wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
 	}
@@ -172,6 +191,10 @@ public class Basemethods extends BaseTest {
 	}
 	public void SendKeysName(String keys , String name) throws Exception {
 		wd.findElement(By.name(name)).sendKeys(keys);
+	}
+	
+	public void SendKeysMobID(String keys , String name) throws Exception {
+		wd.findElement(By.id(name)).sendKeys(keys);
 	}
 	
 	
@@ -235,23 +258,21 @@ public class Basemethods extends BaseTest {
 			Calendar calendar = Calendar.getInstance();
 			 SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm");
 			 String num = GenerateCheckDigit(null);
-
-				WaitName("LOGIN");
+				Thread.sleep(3000);
+				WaitID("com.icrealtime.allie:id/after_splash_login");
 		String mailID = new String("dpleamco+" + formater.format(calendar.getTime())+ "@icrealtech.com");
-		TapName("LOGIN");
-		TapName("CREATE ACCOUNT");
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextField[1]");
-		SendKeysXpath(mailID,
-				"//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextField[1]");
+		TapID("com.icrealtime.allie:id/after_splash_login");
+		TapID("com.icrealtime.allie:id/auth_create_account");
+		SendKeysMobID(mailID,
+				"com.icrealtime.allie:id/auth_email");
 		System.out.println(mailID);
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIASecureTextField[1]");
-		SendKeysXpath("dymon0101",
-				"//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIASecureTextField[1]");
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIASecureTextField[2]");
-		SendKeysXpath("dymon0101",
-				"//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIASecureTextField[2]");
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAButton[1]");
-		TapName("CREATE");
+		SendKeysMobID("dymon0101",
+				"com.icrealtime.allie:id/auth_password");
+		SendKeysMobID("dymon0101",
+				"com.icrealtime.allie:id/auth_password2");
+	wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 65); put("y", (double) 586); }});
+	//	wd.findElement(By.id("com.icrealtime.allie:id/auth_checkbox")).click();
+		wd.findElement(By.id("com.icrealtime.allie:id/auth_btn")).click();
 		
 		setUpWeb(); //WebDriver
 		Get("https://accounts.google.com/");
@@ -295,14 +316,7 @@ public class Basemethods extends BaseTest {
 	        ClickXpath(xpath);
 			CkickSelfTarg("//div[7]/div[3]/div/div[2]/div[1]/div[2]/div/div/div/div[2]/div[1]/div[1]/div/div[2]/div/table/tr/td[1]/div[2]/div[2]/div/div[3]/div/div/div/div/div/div[1]/div[2]/div[7]/div/a[2]");
 		Thread.sleep(600);
-		try {
-			String alert = GetTextMobXpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIAScrollView[1]/UIAStaticText[2]");
-			System.out.println(alert);
-			TapName("Ok");
-		} catch (Exception e) {
-			System.out.println("Alert is not present");
-		}
-		
+
 		ClicklinkText("Start Using ALLie");
 		
 		
@@ -315,45 +329,55 @@ public class Basemethods extends BaseTest {
 	//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]
 		
 		
-		//TapName("LOGIN");
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextField[1]");
-		SendKeysXpath(mailID,
-				"//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextField[1]");
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIASecureTextField[1]");
-		SendKeysXpath("dymon0101",
-				"//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIASecureTextField[1]");
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAButton[1]");
-		TapName("LOGIN");
+			TapID("com.icrealtime.allie:id/after_splash_login");
+		
+			SendKeysMobID(mailID,
+					"com.icrealtime.allie:id/auth_email");
+			SendKeysMobID("dymon0101",
+					"com.icrealtime.allie:id/auth_password");
+			
+			TapID("com.icrealtime.allie:id/auth_checkbox");
+			
+			TapID("com.icrealtime.allie:id/auth_btn");
 		System.out.println("____LOGIN_Passed____");
 		Thread.sleep(6000);
-		WaitName("Side menu button");
-		wd.findElement(By.name("Side menu button")).click();
-		wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]")).click();
-		TapName("Change password");
-		TapName("TextField Account Settings Current Password");
-		SendKeysName("dymon0101","TextField Account Settings Current Password");
+		WaitName("Open navigation drawer");
+		TapXpath("//*[@class='android.widget.ImageButton' and @content-desc='Open navigation drawer']");
 		
-	TapName("TextField Account Settings New Password");
+		Thread.sleep(2000);	
+		TapXpath("//*[@class='android.widget.TextView' and @resource-id='com.icrealtime.allie:id/menu_item_title' and @text='Account']");
+	
+	
+		TapXpath("//*[@class='android.widget.TextView' and @text='Change password']");
+		wd.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.FrameLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.ExpandableListView[1]/android.widget.LinearLayout[2]/android.widget.EditText[1]")).sendKeys("dymon0101");
 		String pass = RandomStringUtils.randomAlphanumeric(9);
 		System.out.println(pass);
-		String mailIDck = GetAttributeMobXpath("name", "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
-		SendKeysName(pass,"TextField Account Settings New Password");
-		TapName("TextField Account Settings Confirm Password");
-		SendKeysName(pass,"TextField Account Settings Confirm Password");
-	   wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 395); put("y", (double) 440); }});
-	   TapName("LOG OUT");
+		wd.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.FrameLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.ExpandableListView[1]/android.widget.LinearLayout[3]/android.widget.EditText[1]")).sendKeys(pass);
+		wd.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.FrameLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.ExpandableListView[1]/android.widget.LinearLayout[4]/android.widget.EditText[1]")).sendKeys(pass);
+		
+	
+		
+		//String mailIDck = GetAttributeMobXpath("name", "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
+		
+		TapID("com.icrealtime.allie:id/account_change_pswd_btn");
+		
+		TapID("com.icrealtime.allie:id/account_logout");
+	
 	   
-	   TapName("LOGIN");
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextField[1]");
-		SendKeysXpath(mailIDck,
-				"//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextField[1]");
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIASecureTextField[1]");
-		SendKeysXpath(pass,
-				"//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIASecureTextField[1]");
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAButton[1]");
-		TapName("LOGIN");
+
+		TapID("com.icrealtime.allie:id/after_splash_login");
+	
+		SendKeysMobID(mailID,
+				"com.icrealtime.allie:id/auth_email");
+		SendKeysMobID(pass,
+				"com.icrealtime.allie:id/auth_password");
+		
+		TapID("com.icrealtime.allie:id/auth_checkbox");
+		
+		TapID("com.icrealtime.allie:id/auth_btn");
 		System.out.println("____ChangePass_Passed____");
 		
+		Thread.sleep(600000);
 	}
 	    public void CheckSocialAcc(int r) throws Exception {
 	    	
@@ -895,45 +919,21 @@ quit();
 	try {
 		
 		
-//		setUpWeb(); //WebDriver
-//		Get("http://192.168.7.66:4000/index.html");
-//		String wifi = driver.findElement(By.xpath("/html/body/table/tbody/tr[3]/td[1]/fieldset[2]/table/tbody/tr/td[2]/fieldset/table/tbody/tr[1]/td[2]")).getText();
-//		
-//		System.out.println(wifi);
-		
+		TapID("com.icrealtime.allie:id/camera_menu_btn");
+		TapID("com.icrealtime.allie:id/camera_menu_settings");
+		TapID("com.icrealtime.allie:id/settings_remove_allie");
+		TapID("com.icrealtime.allie:id/remove_remove");
 
-	
-	wd.findElement(By.name("Button My ALLies Edit")).click();
-wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 440); put("y", (double) 187); }});
-		
-try {
-	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[5]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]")).click();
-	Thread.sleep(5200);
-	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIASecureTextField[1]")).sendKeys("splinex271813");
-	TapXpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]");
-} catch (Exception e) {
-}
-wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[12]/UIAStaticText[1]")).click();
-		wd.findElement(By.name("REMOVE")).click();
-		TapName("Ok");
 	} catch (Exception e) {
 		
 	}
 	Thread.sleep(5200);
-	WaitName("Side menu button");
-	wd.findElement(By.name("Side menu button")).click();
-	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]")).click();
-	try {
-		wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[2]/UIAStaticText[1]")).click();
-		wd.findElement(By.name("REMOVE PLAN")).click();
-		TapName("Yes");
-		//wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]")).click();
-	} catch (Exception e) {
-		wd.findElement(By.name("Back button black")).click();
-	}
-	
-	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[5]/UIAButton[1]")).click();
-	
+	TapXpath("//*[@class='android.widget.ImageButton' and @content-desc='Open navigation drawer']");
+	TapXpath("//*[@class='android.widget.TextView' and @resource-id='com.icrealtime.allie:id/menu_item_title' and @text='Account']");
+
+	TapID("com.icrealtime.allie:id/account_logout");
+
+
 }
 
  /////////////////////////////////
@@ -969,15 +969,17 @@ wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATab
 
 	    public void AddCamera() throws Exception {
 	    	Thread.sleep(4600);
-		WaitName("Buy new allie");
-		TapName("Add new allie small");
-		TapName("FIND NEW ALLIE");
+		WaitID("com.icrealtime.allie:id/add_add");
+		TapID("com.icrealtime.allie:id/add_add");
+		TapID("com.icrealtime.allie:id/welcome_btn");
+		WaitXpath("//*[@class='android.widget.TextView' and @resource-id='com.icrealtime.allie:id/found_camera_title' and @text='Allie-11155101833']");
 		
-		WaitName("Select Camera");
+	
 		try {
 
+			TapXpath("//*[@class='android.widget.TextView' and @resource-id='com.icrealtime.allie:id/found_camera_title' and @text='Allie-11155101833']");
 			
-			TapName("Allie-16155100228");
+		
 			//TapName("Allie-16155203625");
 		} catch (Exception e3) {
 			System.out.println("Filed to connect wifi");
@@ -1000,50 +1002,30 @@ wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATab
 		} catch (Exception e) {
 		}
 		
-//		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
-//			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[4]")).click();
+
 			Thread.sleep(18000);
 			try {
-				WaitXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
-				TapName("1503-5G");
+				WaitXpath("//*[@class='android.widget.TextView' and @resource-id='com.icrealtime.allie:id/wifi_network_title' and @text='1503-5G']");
+				
+				TapXpath("//*[@class='android.widget.TextView' and @resource-id='com.icrealtime.allie:id/wifi_network_title' and @text='1503-5G']");
+				
+			
 				//TapName("1503");
 			} catch (Exception e4) {
-				try {
-					wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIASecureTextField[1]")).sendKeys("splinex271813");
-					TapXpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]");
-					TapName("1503-5G");
-				} catch (Exception e) {
-				}
-				System.out.println("Filed to connect wifi");
-				Runtime.getRuntime().exec(new String[] {"/Users/dmitriy/Documents/workspace/Allie/resetBLE"});
-				Thread.sleep(18000);
-//				setUpWeb(); //WebDriver
-//				Get("http://192.168.7.92:4000/index.html");
-//			    driver.findElement(By.xpath("//input[@value='Reboot device']")).click();
-//				Thread.sleep(8000);
-//				quit();
-
-				Runtime.getRuntime().exec(new String[] {"/Users/dmitriy/Documents/workspace/Allie/startCameraApp"});
-		
-				wd.resetApp();
-				wd.findElement(By.name("Side menu button")).click();
-				wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]")).click();
-				wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[5]")).click();
-			
 				
 			}
 			try {
-				wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIASecureTextField[1]")).sendKeys("splinex271813");
-				TapXpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]");
+				SendKeysMobID("splinex271813","com.icrealtime.allie:id/wifi_password_et");
+				TapID("com.icrealtime.allie:id/wifi_password_set_btn");
 			} catch (Exception e) {
 			}
 			Thread.sleep(18600);
-			try {
-				WaitName("SUCCESS!");
-			} catch (Exception e2) {
-				System.out.println("Filed to connect wifi");
-				Runtime.getRuntime().exec(new String[] {"/Users/dmitriy/Documents/workspace/Allie/resetBLE"});
-			}
+		
+				WaitID("android:id/customPanel");
+				TapID("android:id/button1");
+				WaitID("com.icrealtime.allie:id/camera_title");
+				Thread.sleep(1800000);
+				//com.icrealtime.allie:id/camera_availability_status
 			TapName("Side menu button");
 			TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]");
 			System.out.println("____CamAdded____");

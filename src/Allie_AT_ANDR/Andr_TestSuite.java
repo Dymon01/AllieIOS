@@ -1,4 +1,4 @@
-package ALLie_AutoTests;
+package Allie_AT_ANDR;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +19,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
-public class TestSuite extends BaseTest {
+public class Andr_TestSuite extends ANDR_BaseTest {
 
 //	
 //	@Test
@@ -32,28 +32,30 @@ public class TestSuite extends BaseTest {
 	
 //	@Test
 //	public void AccountScreen() throws Exception {	
+//
 //	YTStrm_resolution accountScreen = new YTStrm_resolution(file, xpath, name, keys, wd, driver);
 //	 accountScreen.ResCheck();
+//	
 //	}
 
-	@Test
-	public void Ride() throws Exception {
+//	@Test
+//	public void Ride() throws Exception {
 //		int r = 0;
 //		do {
 //		SecurityMode checksecurity = new SecurityMode(file, xpath, name, keys, wd, driver); checksecurity.SecMode();
 //		r++;	System.out.println("Round-"+ r);
 //		
 //	} while (r < 1);
-		 AccountScreen accountScreen = new AccountScreen(file, xpath, name, keys, wd, driver);
-		 accountScreen.AccountCheck();
-
-	}
+//		 Andr_AccountScreen accountScreen = new Andr_AccountScreen(file, xpath, name, keys, wd, driver);
+//		 accountScreen.AccountCheck();
+//
+//	}
 
 
 	@Test
 	public void Schedul_() throws Exception {
 
-	 AccountScreen accountScreen = new AccountScreen(file, xpath, name, keys, wd, driver);
+	 Andr_AccountScreen accountScreen = new Andr_AccountScreen(file, xpath, name, keys, wd, driver);
 		 accountScreen.AccountCheck();
 		// wd.quit();
 	}
@@ -61,7 +63,7 @@ public class TestSuite extends BaseTest {
 	@Test
 	public void Schedul_2() throws Exception {
 
-	 AccountScreen accountScreen = new AccountScreen(file, xpath, name, keys, wd, driver);
+	 Andr_AccountScreen accountScreen = new Andr_AccountScreen(file, xpath, name, keys, wd, driver);
 		 accountScreen.AccountCheck();
 		// wd.quit();
 	}

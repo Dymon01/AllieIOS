@@ -1,8 +1,9 @@
-package ALLie_AutoTests;
+package Allie_AT_ANDR;
 
 import static org.junit.Assert.assertEquals;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 
 import java.io.BufferedReader;
@@ -38,14 +39,14 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AccountScreen extends Basemethods{
+public class Andr_AccountScreen extends ANDR_Basemethods{
 
-	private IOSDriver wd;
+	private AndroidDriver wd;
 	private WebDriverWait wait;
 	 private WebDriver driver;
 	
 	
-	public AccountScreen(String file, String xpath,String name, String  keys, IOSDriver wd, WebDriver driver) {
+	public Andr_AccountScreen(String file, String xpath,String name, String  keys, AndroidDriver wd, WebDriver driver) {
 		super(file, xpath, name, keys, wd, driver );	
 		this.file = file;
 		this.xpath = xpath;
@@ -61,14 +62,14 @@ public class AccountScreen extends Basemethods{
 	//	RunLog();
 
 		Thread.sleep(7000);
-WaitXpath( "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]");
-		
-		String button = GetAttributeMobXpath("name", "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]");
-		// System.out.println(button); //Buy new allie
-if (!button.equals("LOGIN"))
-{
-	Restore();
-	}
+
+		try {
+			TapID("com.icrealtime.allie:id/after_splash_login");
+		} catch (Exception e) {
+			Restore();
+		}
+	
+	
 
 		int r = 0;
 		do {
@@ -86,7 +87,7 @@ if (!button.equals("LOGIN"))
 			CamSettings();
 			GetScreenShot("Screenshots/Cam.jpg");		
 				//	youtube_stream();	
-		YTStrm_resolution runres = new YTStrm_resolution(file, xpath, name, keys, wd, driver);	runres.ResCheck();
+	//	YTStrm_resolution runres = new YTStrm_resolution(file, xpath, name, keys, wd, driver);	runres.ResCheck();
 	
 			Snapshot_Gallery();
 			
