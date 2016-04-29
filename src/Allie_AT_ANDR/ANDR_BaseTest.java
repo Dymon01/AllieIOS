@@ -49,11 +49,11 @@ public class ANDR_BaseTest {
 
 	      File classpathRoot = new File(System.getProperty("user.dir"));
 	        File appDir = new File(classpathRoot, "src/Allie_AT_ANDR/APK/");
-	        File app = new File(appDir, "AllieHome-5-debug.apk");
+	        File app = new File(appDir, "AllieHome-6-debug.apk");
 	    
 	        capabilities.setCapability("appium-version", "1.0");
 	       // capabilities.setCapability("deviceName","192.168.1.57:5555"); HT577WV00300 Galaxy Tab S2 Nexus 9
-	        capabilities.setCapability("deviceName","Nexus 9");
+	        capabilities.setCapability("deviceName","Galaxy Tab S2");
 	        capabilities.setCapability("platformVersion", "5.0");
 	        //capabilities.setCapability("noReset",true);
 	        capabilities.setCapability("noReset","true");

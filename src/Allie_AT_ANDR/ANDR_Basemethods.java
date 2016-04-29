@@ -27,6 +27,8 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.android.AndroidKeyCode;
 import io.appium.java_client.ios.IOSDriver;
 
 
@@ -170,9 +172,20 @@ public class ANDR_Basemethods extends ANDR_BaseTest {
 	
 	public void TapID(String name) throws Exception {
 		 wd.findElement(By.id(name)).click();
-
-
 	}
+
+	public void ProgressBar() throws Exception {	
+	try {
+		String ProgressBar = null;
+		do {
+		 ProgressBar = wd.findElement(By.xpath("//*[@class='android.widget.ProgressBar']")).getText();
+		System.out.print(ProgressBar + "_");
+		} while (!ProgressBar.equals(null))	;
+	} catch (Exception e) {
+		System.out.println("|");
+	}
+	}
+	
 	
 	public void WaitID(String name) throws Exception {
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id(name)));
@@ -259,10 +272,15 @@ public class ANDR_Basemethods extends ANDR_BaseTest {
 			 SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm");
 			 String num = GenerateCheckDigit(null);
 				Thread.sleep(3000);
-				WaitID("com.icrealtime.allie:id/after_splash_login");
-		String mailID = new String("dpleamco+" + formater.format(calendar.getTime())+ "@icrealtech.com");
-		TapID("com.icrealtime.allie:id/after_splash_login");
+			String mailID = new String("dpleamco+" + formater.format(calendar.getTime())+ "@icrealtech.com");
+		try {
+			TapID("com.icrealtime.allie:id/after_splash_login");
+		} catch (Exception e) {
+		}
+		//wd.sendKeyEvent(AndroidKeyCode.BACK);
+		WaitID("com.icrealtime.allie:id/auth_create_account");
 		TapID("com.icrealtime.allie:id/auth_create_account");
+	
 		SendKeysMobID(mailID,
 				"com.icrealtime.allie:id/auth_email");
 		System.out.println(mailID);
@@ -270,9 +288,16 @@ public class ANDR_Basemethods extends ANDR_BaseTest {
 				"com.icrealtime.allie:id/auth_password");
 		SendKeysMobID("dymon0101",
 				"com.icrealtime.allie:id/auth_password2");
+		wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 65); put("y", (double) 558); }});
+		wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 95); put("y", (double) 802); }});
 	wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 65); put("y", (double) 586); }});
+//	Thread.sleep(80000);
 	//	wd.findElement(By.id("com.icrealtime.allie:id/auth_checkbox")).click();
-		wd.findElement(By.id("com.icrealtime.allie:id/auth_btn")).click();
+		try {
+			wd.findElement(By.id("com.icrealtime.allie:id/auth_btn")).click();
+		} catch (Exception e) {
+
+		}
 		
 		setUpWeb(); //WebDriver
 		Get("https://accounts.google.com/");
@@ -347,8 +372,8 @@ public class ANDR_Basemethods extends ANDR_BaseTest {
 		Thread.sleep(2000);	
 		TapXpath("//*[@class='android.widget.TextView' and @resource-id='com.icrealtime.allie:id/menu_item_title' and @text='Account']");
 	
-	
-		TapXpath("//*[@class='android.widget.TextView' and @text='Change password']");
+		TapID("com.icrealtime.allie:id/expandable_edit_text_group_item");
+		//TapXpath("//*[@class='android.widget.TextView' and @text='Change password']");
 		wd.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.FrameLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.ExpandableListView[1]/android.widget.LinearLayout[2]/android.widget.EditText[1]")).sendKeys("dymon0101");
 		String pass = RandomStringUtils.randomAlphanumeric(9);
 		System.out.println(pass);
@@ -358,9 +383,11 @@ public class ANDR_Basemethods extends ANDR_BaseTest {
 	
 		
 		//String mailIDck = GetAttributeMobXpath("name", "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
-		
+		wd.sendKeyEvent(AndroidKeyCode.BACK);
 		TapID("com.icrealtime.allie:id/account_change_pswd_btn");
 		
+		//Thread.sleep(6000);
+		ProgressBar();
 		TapID("com.icrealtime.allie:id/account_logout");
 	
 	   
@@ -377,7 +404,7 @@ public class ANDR_Basemethods extends ANDR_BaseTest {
 		TapID("com.icrealtime.allie:id/auth_btn");
 		System.out.println("____ChangePass_Passed____");
 		
-		Thread.sleep(600000);
+		Thread.sleep(6000);
 	}
 	    public void CheckSocialAcc(int r) throws Exception {
 	    	
@@ -749,131 +776,105 @@ TapName("Cancel");
 		
 		
 	    public void Sharing() throws Exception {
-	    	Thread.sleep(5900);
-		try {
-			Player_ActivityIndicator();
-			wd.findElement(By.name("Record player button")).click();
-		} catch (Exception e2) {
-			System.out.println("____CardAddFailed____");
-		}
-		Thread.sleep(9900);
-		//GetScreenShot("Screenshots/CamRec.jpg");
-		try {
-			WaitName("Snapthot player button");
-			TapName("Snapthot player button");
-		} catch (Exception e2) {
-			System.out.println("SnapthotFailed____");
-		}
-		wd.findElement(By.name("Stop player button")).click();
-		WaitName("Back button black");
-		TapName("Back button black");
-		WaitName("Side menu button");
-		TapName("Side menu button");
-		WaitXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIAStaticText[1]");
-		wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIAStaticText[1]")).click();
-		wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[1]")).click();
-		wd.findElement(By.name("Video_play_button")).click();
+	    	try {
+	    		ProgressBar();
+				TapID("com.icrealtime.allie:id/player_rec_bottom");
+			} catch (Exception e2) {
+				TapID("com.icrealtime.allie:id/camera_availability_status");
+			
+			    //android.widget.ProgressBar
+				ProgressBar();
+				
+				//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.ProgressBar[1]
+				
+				Thread.sleep(7900);
+				TapID("com.icrealtime.allie:id/player_rec_bottom");
+			}
+	    	
+	    	int p1 = 0;
+	    	do {
+	    	//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]
+	    	Thread.sleep(17900);
+	    	String timer = wd.findElement(By.xpath("//*[@class='android.widget.TextView' and @resource-id='com.icrealtime.allie:id/label_recording_duration_bottom']")).getText();
+        	String[] parts = timer.split(":");
+    		 p1 = Integer.valueOf(parts[2]);
+    		System.out.print(p1);
+	    	} while (p1 < 10);
+	    	
 		wd.rotate (ScreenOrientation.LANDSCAPE);
 		GetScreenShot("Screenshots/TimeLine_Landscape.jpg");	
 		wd.rotate (ScreenOrientation.PORTRAIT);
-		wd.findElement(By.name("Share player button")).click();
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextField[1]");
-		
+		TapID("com.icrealtime.allie:id/player_rec_bottom");
+	
 		Calendar calendar = Calendar.getInstance();	
 		 SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm");
+		 TapID("com.icrealtime.allie:id/player_gallery");
 
-		SendKeysXpath("_sh_" +formater.format(calendar.getTime()),"//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextField[1]");
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextView[1]");
-		SendKeysXpath("Comment___" +(calendar.getTime()),"//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextView[1]");
+		 String time = wd.findElement(By.xpath("//*[@class='android.widget.TextView' and @resource-id='com.icrealtime.allie:id/gallery_item_duration']")).getText();
+		 System.out.println(time);
+		 WaitID("com.icrealtime.allie:id/gallery_item_is_record");
+		 TapID("com.icrealtime.allie:id/gallery_item_is_record");
 	
-	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextField[1]")).click();
-	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextView[1]")).click();
-	wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 720); put("y", (double) 513); }});
-	Thread.sleep(5900);
+			Thread.sleep(5900);
+	 try {
+		TapID("com.icrealtime.allie:id/gallery_item_is_record");
+	} catch (Exception e2) {
+
+	}
+				
+		 TapXpath("//*[@class='android.widget.TextView' and @content-desc='Share']");
+			String sharName = "Andr_sh_" +formater.format(calendar.getTime());
+		SendKeysMobID(sharName,"com.icrealtime.allie:id/title_share");
+		 System.out.println(sharName);
+		SendKeysMobID(RandomStringUtils.randomAlphabetic(6),"com.icrealtime.allie:id/description_share");
+		 TapID("com.icrealtime.allie:id/facebook");
+		Thread.sleep(5900);
 	try {
-			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIALink[8]")).click();
-			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIATextField[1]")).click();
-			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIATextField[1]")).sendKeys("dmitriip@stelar.md");
-			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIASecureTextField[1]")).click();
-			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIASecureTextField[1]")).sendKeys("dymon01");
-//	wd.findElement(By.name("Перейти")).click();
-			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 375); put("y", (double) 410); }});
-			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 371); put("y", (double) 864); }});
-			wd.findElement(By.name("OK")).click();
+		//wd.findElement(By.name("Email address or phone number")).sendKeys("dmitriip@stelar.md");
+			wd.findElement(By.xpath("//*[@class='android.widget.EditText' and @content-desc='Email address or phone number']")).sendKeys("dmitriip@stelar.md");
+			SendKeysXpath("dymon01","//*[@class='android.widget.EditText' and @resource-id='u_0_1']");
+		//	SendKeysMobID("dymon01","u_0_1");
+			//TapID("u_0_5"); 
+			wd.findElement(By.name("Log In ")).click();
+			Thread.sleep(50900);
+			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 997); put("y", (double) 1685); }});
+
 		} catch (Exception e1) {
+			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 997); put("y", (double) 1685); }});
 
 		}
-	
-	Thread.sleep(2200);
-		wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 405); put("y", (double) 987); }});
-		wd.findElement(By.name("SHARE")).click();
-		//xpath: //UIAApplication[1]/UIAWindow[1]/UIAStaticText[1]
+
+	TapID("com.icrealtime.allie:id/youtube");
+	try {
+		TapID("com.icrealtime.allie:id/youtube");
+	} catch (Exception e1) {
+	}
+	String Acc = wd.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.CheckedTextView[3]")).getText();
+	 System.out.println(Acc);
+	wd.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.CheckedTextView[3]")).click();
+	TapID("android:id/button2");
+	TapID("com.icrealtime.allie:id/button_share");
+
+	 String alertTitle =  null;
+	 do {
+		  alertTitle = wd.findElement(By.id("android:id/alertTitle")).getText();
+			 try {
+				String progr = wd.findElement(By.id("android:id/progress_percent")).getText();
+				 System.out.print(progr + "/");
+			} catch (Exception e) {
+			}
+			 
+		 }while (!alertTitle.equals("Your videos were uploaded"));
+	 System.out.println(alertTitle);
+	 
+	 TapID("android:id/button1");
+	 TapXpath("//*[@class='android.widget.ImageButton' and @content-desc='Navigate up']");
+		//TapName("Navigate up");
+	 wd.findElement(By.name("Open navigation drawer")).click();
+	 TapID("com.icrealtime.allie:id/menu_container");
 		//	xpath: //UIAApplication[1]/UIAWindow[1]/UIAProgressIndicator[1]
-		String elval = null;
-		
-		do { 
-			try {
-				elval = GetAttributeMobXpath("value","//UIAApplication[1]/UIAWindow[1]/UIAProgressIndicator[1]");
-				System.out.print("_"+elval);
-			} catch (Exception e) { 
-			}
-			try {
-				elval = GetAttributeMobXpath("value","//UIAApplication[1]/UIAWindow[1]/UIAStaticText[1]");
-				System.out.print("_"+elval);
-			} catch (Exception e) { 
-			}
-			try {
-				TapName("Ok");//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]
-				wd.findElement(By.name("SHARE")).click();
-			} catch (Exception e) { 
-			}
-			
-		}
-			while ( !elval.equals("SUCCESS!")			
-			
-					);
-		
+	 
 
-		Thread.sleep(19900);
-		WaitName("SUCCESS!");
-		
-		WaitName("Back button black");
-		
-		TapName("SEND TO FRIEND");
-		Thread.sleep(2200);
-		//wd.switchTo().alert().accept();
-		try {
-			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]")).click();
-		} catch (Exception e) {
-		
-			try {
-				wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[6]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]")).click();
-			} catch (Exception e1) {
-			
-			}
-	
-		
-		}
-		
-		wd.findElement(By.name("toField")).sendKeys("dpleamco@icrealtech.com");//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextView[1]
-		String links = GetAttributeMobName("value", "Message body");
-		System.out.println(links);
-		Thread.sleep(1900);
-	  TapName("return");
-		wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[2]/UIAButton[3]")).click();
-		TapName("Back button black");
-		TapName("Back button black");
-		TapName("Back button black");
-		TapName("Edit");
-		
-		wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAButton[1]")).click();
-		wd.findElement(By.name("Delete")).click();
-		try {
-			wd.findElement(By.name("Edit")).click();
-			System.out.println("Fail to remove folder");
-		} catch (Exception e) {
-			System.out.println("Gallery is empty");
-		}
 		System.out.println("____Sharing_Done____");
 	
 	    }
@@ -929,6 +930,7 @@ quit();
 	}
 	Thread.sleep(5200);
 	TapXpath("//*[@class='android.widget.ImageButton' and @content-desc='Open navigation drawer']");
+	WaitXpath("//*[@class='android.widget.TextView' and @resource-id='com.icrealtime.allie:id/menu_item_title' and @text='Account']");
 	TapXpath("//*[@class='android.widget.TextView' and @resource-id='com.icrealtime.allie:id/menu_item_title' and @text='Account']");
 
 	TapID("com.icrealtime.allie:id/account_logout");
@@ -972,6 +974,7 @@ quit();
 		WaitID("com.icrealtime.allie:id/add_add");
 		TapID("com.icrealtime.allie:id/add_add");
 		TapID("com.icrealtime.allie:id/welcome_btn");
+		ProgressBar();
 		WaitXpath("//*[@class='android.widget.TextView' and @resource-id='com.icrealtime.allie:id/found_camera_title' and @text='Allie-11155101833']");
 		
 	
@@ -1019,15 +1022,14 @@ quit();
 				TapID("com.icrealtime.allie:id/wifi_password_set_btn");
 			} catch (Exception e) {
 			}
-			Thread.sleep(18600);
-		
+			
+			ProgressBar();
 				WaitID("android:id/customPanel");
+			
 				TapID("android:id/button1");
 				WaitID("com.icrealtime.allie:id/camera_title");
-				Thread.sleep(1800000);
-				//com.icrealtime.allie:id/camera_availability_status
-			TapName("Side menu button");
-			TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]");
+				Thread.sleep(1800);
+				TapID("com.icrealtime.allie:id/camera_availability_status");
 			System.out.println("____CamAdded____");
 }
 
