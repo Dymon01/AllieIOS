@@ -3,48 +3,47 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Failed suite [Default suite]]">
   <test verbose="2" name="Default test">
     <classes>
-      <class name="ALLie_AutoTests.TestSuite"/>
+      <class name="Allie_AT_ANDR.Andr_TestSuite"/>
     </classes>
   </test> <!-- Default test -->
   <test name="Default test(failed)">
     <classes>
-      <class name="ALLie_AutoTests.TestSuite">
+      <class name="Allie_AT_ANDR.Andr_TestSuite">
         <methods>
           <include name="setUp"/>
-          <include name="Ride"/>
-          <include name="AccountScreen"/>
-          <include name="Schedul_"/>
+          <include name="Schedul_2"/>
           <include name="catchExceptions"/>
+          <include name="Schedul_"/>
         </methods>
-      </class> <!-- ALLie_AutoTests.TestSuite -->
+      </class> <!-- Allie_AT_ANDR.Andr_TestSuite -->
     </classes>
   </test> <!-- Default test(failed) -->
   <test name="Default test(failed)">
     <classes>
-      <class name="ALLie_AutoTests.TestSuite">
+      <class name="Allie_AT_ANDR.Andr_TestSuite">
         <methods>
           <include name="setUp"/>
           <include name="setUp"/>
-          <include name="AccountScreen"/>
+          <include name="Schedul_2"/>
           <include name="catchExceptions"/>
           <include name="catchExceptions"/>
+          <include name="Schedul_"/>
         </methods>
-      </class> <!-- ALLie_AutoTests.TestSuite -->
+      </class> <!-- Allie_AT_ANDR.Andr_TestSuite -->
     </classes>
   </test> <!-- Default test(failed) -->
   <test name="Default test(failed)(failed)">
     <classes>
-      <class name="ALLie_AutoTests.TestSuite">
+      <class name="Allie_AT_ANDR.Andr_TestSuite">
         <methods>
           <include name="setUp"/>
           <include name="setUp"/>
-          <include name="Ride"/>
-          <include name="AccountScreen"/>
+          <include name="Schedul_2"/>
+          <include name="catchExceptions"/>
+          <include name="catchExceptions"/>
           <include name="Schedul_"/>
-          <include name="catchExceptions"/>
-          <include name="catchExceptions"/>
         </methods>
-      </class> <!-- ALLie_AutoTests.TestSuite -->
+      </class> <!-- Allie_AT_ANDR.Andr_TestSuite -->
     </classes>
   </test> <!-- Default test(failed)(failed) -->
 </suite> <!-- Failed suite [Failed suite [Default suite]] -->

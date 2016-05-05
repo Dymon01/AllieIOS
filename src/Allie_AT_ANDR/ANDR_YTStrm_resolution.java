@@ -86,11 +86,26 @@ SendKeysMobID("Enter Description_" + RandomStringUtils.randomAlphabetic(3),"com.
 			
 		TapID("com.icrealtime.allie:id/radio_video_privacy_public");
 		TapID("com.icrealtime.allie:id/button_dialog_ok");
-		String live = null;
+		try {
+			String live = null;
+			int v = 0;
 do {Thread.sleep(16000);
-		 live = wd.findElement(By.id("com.icrealtime.allie:id/live_label_bottom")).getText();
-		 System.out.print(live+"_");
-}while (!live.equals("LIVE"));
+			 live = wd.findElement(By.id("com.icrealtime.allie:id/live_label_bottom")).getText();
+			 System.out.print(live+"_");
+			 v++;
+}while (!live.equals("LIVE")&& v < 60);
+		} catch (Exception e3) {
+			Thread.sleep(1600);
+			System.out.print("!_!");
+			TapID("android:id/button1");
+			String live = null;
+			int v = 0;
+			do {Thread.sleep(16000);
+						 live = wd.findElement(By.id("com.icrealtime.allie:id/live_label_bottom")).getText();
+						 System.out.print(live+"_");
+						 v++;
+			}while (!live.equals("LIVE")&& v < 60);
+		}
 Thread.sleep(7050);
 
 TapID("com.icrealtime.allie:id/action_link");
@@ -103,7 +118,11 @@ System.out.println("\n" +link );
 TapID("com.google.android.gm:id/send");
 
 
-TapID("android:id/button1");
+try {
+	TapID("android:id/button1");
+} catch (Exception e2) {
+	
+}
 
 	
 
@@ -159,7 +178,7 @@ TapID("android:id/button1");
 
 		
 			r++;
-			System.out.println(r);
+			System.out.println("YT_stream "+r);
 			Thread.sleep(3800);
 			try {
 				quit(); // web

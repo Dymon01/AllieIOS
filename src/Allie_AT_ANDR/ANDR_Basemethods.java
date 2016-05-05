@@ -176,11 +176,13 @@ public class ANDR_Basemethods extends ANDR_BaseTest {
 
 	public void ProgressBar() throws Exception {	
 	try {
+		int v = 0;
 		String ProgressBar = null;
 		do {
 		 ProgressBar = wd.findElement(By.xpath("//*[@class='android.widget.ProgressBar']")).getText();
 		System.out.print(ProgressBar + "_");
-		} while (!ProgressBar.equals(null))	;
+		v++;
+		} while (!ProgressBar.equals(null)&&v<10000)	;
 	} catch (Exception e) {
 		System.out.println("|");
 	}
@@ -371,15 +373,17 @@ public class ANDR_Basemethods extends ANDR_BaseTest {
 		
 		Thread.sleep(2000);	
 		TapXpath("//*[@class='android.widget.TextView' and @resource-id='com.icrealtime.allie:id/menu_item_title' and @text='Account']");
-	
-		TapID("com.icrealtime.allie:id/expandable_edit_text_group_item");
-		//TapXpath("//*[@class='android.widget.TextView' and @text='Change password']");
-		wd.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.FrameLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.ExpandableListView[1]/android.widget.LinearLayout[2]/android.widget.EditText[1]")).sendKeys("dymon0101");
-		String pass = RandomStringUtils.randomAlphanumeric(9);
-		System.out.println(pass);
-		wd.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.FrameLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.ExpandableListView[1]/android.widget.LinearLayout[3]/android.widget.EditText[1]")).sendKeys(pass);
-		wd.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.FrameLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.ExpandableListView[1]/android.widget.LinearLayout[4]/android.widget.EditText[1]")).sendKeys(pass);
 		
+		TapID("com.icrealtime.allie:id/expand_collapse_icon");
+		//TapXpath("//*[@class='android.widget.TextView' and @text='Change password']");
+		
+		SendKeysMobID("dymon0101","com.icrealtime.allie:id/edittext_item");
+		
+	String pass = RandomStringUtils.randomAlphanumeric(9);
+		System.out.println(pass);
+		Thread.sleep(200);
+		SendKeysXpath(pass,"//*[@class='android.widget.LinearLayout' and @index='2']");
+		SendKeysXpath(pass,"//*[@class='android.widget.LinearLayout' and @index='3']");
 	
 		
 		//String mailIDck = GetAttributeMobXpath("name", "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
@@ -856,6 +860,7 @@ TapName("Cancel");
 	TapID("com.icrealtime.allie:id/button_share");
 
 	 String alertTitle =  null;
+	 int v = 0;
 	 do {
 		  alertTitle = wd.findElement(By.id("android:id/alertTitle")).getText();
 			 try {
@@ -863,8 +868,9 @@ TapName("Cancel");
 				 System.out.print(progr + "/");
 			} catch (Exception e) {
 			}
-			 
-		 }while (!alertTitle.equals("Your videos were uploaded"));
+			 Thread.sleep(4000);
+			 v++;
+		 }while (!alertTitle.equals("Your videos were uploaded") && v < 120);
 	 System.out.println(alertTitle);
 	 
 	 TapID("android:id/button1");

@@ -197,8 +197,7 @@ TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIATextField[1]");
 			try {
 				wd.findElement(By.name("subjectField")).sendKeys(namest);
 			} catch (Exception e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
+
 			}
 			String link = null;
 			try {

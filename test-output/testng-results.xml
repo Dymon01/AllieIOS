@@ -2,23 +2,23 @@
 <testng-results skipped="2" failed="0" total="2" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="33238" started-at="2016-04-29T12:54:06Z" finished-at="2016-04-29T12:54:39Z">
+  <suite name="Default suite" duration-ms="604691" started-at="2016-05-05T04:58:24Z" finished-at="2016-05-05T05:08:29Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="33238" started-at="2016-04-29T12:54:06Z" finished-at="2016-04-29T12:54:39Z">
+    <test name="Default test" duration-ms="604691" started-at="2016-05-05T04:58:24Z" finished-at="2016-05-05T05:08:29Z">
       <class name="Allie_AT_ANDR.Andr_TestSuite">
-        <test-method status="FAIL" signature="setUp()[pri:0, instance:Allie_AT_ANDR.Andr_TestSuite@28864e92]" name="setUp" is-config="true" duration-ms="0" started-at="2016-04-29T17:54:06Z" finished-at="2016-04-29T17:54:06Z">
+        <test-method status="FAIL" signature="setUp()[pri:0, instance:Allie_AT_ANDR.Andr_TestSuite@28864e92]" name="setUp" is-config="true" duration-ms="0" started-at="2016-05-05T09:58:24Z" finished-at="2016-05-05T09:58:24Z">
           <exception class="org.openqa.selenium.SessionNotCreatedException">
             <message>
-              <![CDATA[A new session could not be created. (Original error: Could not find a connected Android device.) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 30.19 seconds
+              <![CDATA[A new session could not be created. (Original error: Requested a new session but one was in progress) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 602.63 seconds
 Build info: version: '2.45.0', revision: '32a636c', time: '2015-03-05 22:01:35'
 System info: host: 'Dmitriys-MacBook-Pro-3.local', ip: '10.0.2.15', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.11.4', java.version: '1.8.0_45'
 Driver info: io.appium.java_client.android.AndroidDriver]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.SessionNotCreatedException: A new session could not be created. (Original error: Could not find a connected Android device.) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 30.19 seconds
+              <![CDATA[org.openqa.selenium.SessionNotCreatedException: A new session could not be created. (Original error: Requested a new session but one was in progress) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 602.63 seconds
 Build info: version: '2.45.0', revision: '32a636c', time: '2015-03-05 22:01:35'
 System info: host: 'Dmitriys-MacBook-Pro-3.local', ip: '10.0.2.15', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.11.4', java.version: '1.8.0_45'
 Driver info: io.appium.java_client.android.AndroidDriver
@@ -68,11 +68,11 @@ Driver info: io.appium.java_client.android.AndroidDriver
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="SKIP" signature="Schedul_()[pri:0, instance:Allie_AT_ANDR.Andr_TestSuite@28864e92]" name="Schedul_" duration-ms="13" started-at="2016-04-29T17:54:38Z" finished-at="2016-04-29T17:54:38Z">
+        <test-method status="SKIP" signature="Schedul_()[pri:0, instance:Allie_AT_ANDR.Andr_TestSuite@28864e92]" name="Schedul_" duration-ms="3" started-at="2016-05-05T10:08:29Z" finished-at="2016-05-05T10:08:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Schedul_ -->
-        <test-method status="FAIL" signature="catchExceptions(org.testng.ITestResult)[pri:0, instance:Allie_AT_ANDR.Andr_TestSuite@28864e92]" name="catchExceptions" is-config="true" duration-ms="0" started-at="2016-04-29T17:54:38Z" finished-at="2016-04-29T17:54:38Z">
+        <test-method status="FAIL" signature="catchExceptions(org.testng.ITestResult)[pri:0, instance:Allie_AT_ANDR.Andr_TestSuite@28864e92]" name="catchExceptions" is-config="true" duration-ms="0" started-at="2016-05-05T10:08:29Z" finished-at="2016-05-05T10:08:29Z">
           <params>
             <param index="0">
               <value>
@@ -116,15 +116,15 @@ Driver info: io.appium.java_client.android.AndroidDriver
           <reporter-output>
           </reporter-output>
         </test-method> <!-- catchExceptions -->
-        <test-method status="SKIP" signature="setUp()[pri:0, instance:Allie_AT_ANDR.Andr_TestSuite@28864e92]" name="setUp" is-config="true" duration-ms="0" started-at="2016-04-29T17:54:39Z" finished-at="2016-04-29T17:54:39Z">
+        <test-method status="SKIP" signature="setUp()[pri:0, instance:Allie_AT_ANDR.Andr_TestSuite@28864e92]" name="setUp" is-config="true" duration-ms="0" started-at="2016-05-05T10:08:29Z" finished-at="2016-05-05T10:08:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="SKIP" signature="Schedul_2()[pri:0, instance:Allie_AT_ANDR.Andr_TestSuite@28864e92]" name="Schedul_2" duration-ms="78" started-at="2016-04-29T17:54:39Z" finished-at="2016-04-29T17:54:39Z">
+        <test-method status="SKIP" signature="Schedul_2()[pri:0, instance:Allie_AT_ANDR.Andr_TestSuite@28864e92]" name="Schedul_2" duration-ms="1" started-at="2016-05-05T10:08:29Z" finished-at="2016-05-05T10:08:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Schedul_2 -->
-        <test-method status="FAIL" signature="catchExceptions(org.testng.ITestResult)[pri:0, instance:Allie_AT_ANDR.Andr_TestSuite@28864e92]" name="catchExceptions" is-config="true" duration-ms="0" started-at="2016-04-29T17:54:39Z" finished-at="2016-04-29T17:54:39Z">
+        <test-method status="FAIL" signature="catchExceptions(org.testng.ITestResult)[pri:0, instance:Allie_AT_ANDR.Andr_TestSuite@28864e92]" name="catchExceptions" is-config="true" duration-ms="0" started-at="2016-05-05T10:08:29Z" finished-at="2016-05-05T10:08:29Z">
           <params>
             <param index="0">
               <value>

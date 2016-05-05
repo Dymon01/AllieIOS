@@ -61,7 +61,10 @@ public class Andr_AccountScreen extends ANDR_Basemethods{
 	public void AccountCheck() throws Exception {	
 	//	RunLog();
 
-		Thread.sleep(7000);
+		int r = 0;
+		do {
+
+			Thread.sleep(7000);
 
 		try {
 			TapID("com.icrealtime.allie:id/after_splash_login");
@@ -71,8 +74,6 @@ public class Andr_AccountScreen extends ANDR_Basemethods{
 	
 	
 
-		int r = 0;
-		do {
 		Registration_Change_Restore_Pass();
 		
 		//Thread.sleep(6000);
@@ -96,7 +97,7 @@ public class Andr_AccountScreen extends ANDR_Basemethods{
 			//Restore();
 
 	
-		r++;	System.out.println(r);
+		r++;	System.out.println("Suite " +r);
 	
 	} while (r < 90);
 		wd.quit();
