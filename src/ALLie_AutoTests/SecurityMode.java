@@ -158,7 +158,7 @@ wd.findElement(By.name("OK")).click();
 		TapName("Gallery player button");
 		
 		wd.findElement(By.name("Video_play_button")).click();
-//		wd.rotate (ScreenOrientation.PORTRAIT);
+		wd.rotate (ScreenOrientation.PORTRAIT);
 //		GetScreenShot("Screenshots/GallSec_Landscape.jpg");	
 //		wd.rotate (ScreenOrientation.LANDSCAPE);
 		TapName("Back button black");

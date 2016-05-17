@@ -83,7 +83,8 @@ SendKeysMobID("Enter Description_" + RandomStringUtils.randomAlphabetic(3),"com.
 				TapID("android:id/text1");
 				TapName("720p");
 			};
-			
+			wd.hideKeyboard();
+		//wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 701); put("y", (double) 840); }});
 		TapID("com.icrealtime.allie:id/radio_video_privacy_public");
 		TapID("com.icrealtime.allie:id/button_dialog_ok");
 		try {
@@ -131,6 +132,18 @@ try {
 			setUpWeb(); // WebDriver
 
 			Get(link);
+			try {	
+				Thread.sleep(7000);
+				String StreamAct = GetTextWebXpath("//div[2]/div[4]/div/div[4]/div[2]/div[2]/div/div[6]");
+				System.out.println("__" + StreamAct);
+				
+//				<div class="ytp-spinner" data-layer="4" style="display: none;">
+//				<span class="ytp-spinner-svg">
+//				<svg width="100%" viewBox="0 0 22 
+				
+			} catch (Exception e2) {
+				System.out.println("__stream is started"); 
+			}
 			try {
 				ClickcssSelector("button.ytp-button.ytp-settings-button");
 					ClickXpath("//div[@id='ytp-main-menu-id']/div[2]/div[2]");
@@ -149,9 +162,14 @@ try {
 			} catch (Exception e) {
 		
 			}
-			Thread.sleep(5900);
+			Thread.sleep(83400);
 	
-		
+			try {
+				String StreamAct = GetTextWebXpath("//div[2]/div[4]/div/div[4]/div[2]/div[2]/div/div[6]");
+				System.out.println("__" + StreamAct);
+			} catch (Exception e2) {
+	
+			}
 			try {
 				String StreamSt2 = GetTextWebCssPath("h2.ytp-fresca-byline");
 				String StreamSt3 = GetTextWebCssPath("h1.ytp-fresca-heading");

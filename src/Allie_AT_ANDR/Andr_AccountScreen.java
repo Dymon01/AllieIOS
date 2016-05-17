@@ -93,7 +93,11 @@ public class Andr_AccountScreen extends ANDR_Basemethods{
 			Sharing();
 			SharingCheckWeb();
 			ANDR_YTStrm_resolution runres = new ANDR_YTStrm_resolution(file, xpath, name, keys, wd, driver);	runres.ResCheck();
-			TapName("Navigate up");
+			try {
+				TapName("Navigate up");
+			} catch (Exception e) {
+		
+			}
 			//Restore();
 
 	

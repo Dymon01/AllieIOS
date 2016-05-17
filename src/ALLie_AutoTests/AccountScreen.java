@@ -68,6 +68,7 @@ WaitXpath( "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]");
 if (!button.equals("LOGIN"))
 {
 	Restore();
+	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[5]/UIAButton[1]")).click();
 	}
 
 		int r = 0;
@@ -83,7 +84,7 @@ if (!button.equals("LOGIN"))
 			
 			TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
 
-			CamSettings();
+			//CamSettings();
 			GetScreenShot("Screenshots/Cam.jpg");		
 				//	youtube_stream();	
 		YTStrm_resolution runres = new YTStrm_resolution(file, xpath, name, keys, wd, driver);	runres.ResCheck();
@@ -106,36 +107,11 @@ if (!button.equals("LOGIN"))
 			Thread.sleep(5600);
 			
 			
-		//	SecurityMode checksecurity = new SecurityMode(file, xpath, name, keys, wd, driver); checksecurity.SecMode();
+			SecurityMode checksecurity = new SecurityMode(file, xpath, name, keys, wd, driver); checksecurity.SecMode();
 			
-			WaitName("Button My ALLies Edit");
-			TapName("Button My ALLies Edit");
-			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 414); put("y", (double) 199); }});
-			//TapName("Camera open settings");
-			String BLEpass = GetTextMobXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[11]/UIAStaticText[2]");
-			System.out.println(BLEpass);
-			TapName("Cloud");
-			try {
-				WaitName("REMOVE PLAN");
-				TapName("REMOVE PLAN");
-				TapName("Yes");
-			} catch (Exception e1) {
-				TapName("Back button black");
-			}
-		WaitName("Remove ALLie");
-		TapName("Remove ALLie");
-			WaitName("ARE YOU SURE?");
-			TapName("REMOVE");
-			try {
-				TapName("OK");
-			} catch (Exception e) {
+			Restore();
 
-			}
-
-		TapName("Side menu button");
-		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]");
-		
-	TapName("Change password");
+	
 	SharingCheckWeb();
 	
 		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[5]/UIAButton[1]");

@@ -88,6 +88,12 @@ public class YTStrm_resolution extends Basemethods {
 			} catch (Exception e3) {
 
 			}
+			try {
+TapName("No");
+
+			} catch (Exception e3) {
+
+			}
 
 			Calendar calendar = Calendar.getInstance();
 			SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm");

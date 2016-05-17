@@ -59,7 +59,7 @@ public class ANDR_Basemethods extends ANDR_BaseTest {
 	    //driver = new SafariDriver();
 	    driver = new FirefoxDriver();
 	    //wait = new WebDriverWait(driver, 26);
-	    driver.manage().window().setSize(new Dimension(900, 400));
+	    driver.manage().window().setSize(new Dimension(900, 600));
 	   // driver.manage().window().setSize(new Dimension(1180, 820));
 	    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	   
@@ -182,7 +182,7 @@ public class ANDR_Basemethods extends ANDR_BaseTest {
 		 ProgressBar = wd.findElement(By.xpath("//*[@class='android.widget.ProgressBar']")).getText();
 		System.out.print(ProgressBar + "_");
 		v++;
-		} while (!ProgressBar.equals(null)&&v<10000)	;
+		} while (!ProgressBar.equals(null)&&v<1000)	;
 	} catch (Exception e) {
 		System.out.println("|");
 	}
@@ -374,16 +374,16 @@ public class ANDR_Basemethods extends ANDR_BaseTest {
 		Thread.sleep(2000);	
 		TapXpath("//*[@class='android.widget.TextView' and @resource-id='com.icrealtime.allie:id/menu_item_title' and @text='Account']");
 		
-		TapID("com.icrealtime.allie:id/expand_collapse_icon");
-		//TapXpath("//*[@class='android.widget.TextView' and @text='Change password']");
+		//TapID("com.icrealtime.allie:id/expand_collapse_icon");
+		TapXpath("//*[@class='android.widget.TextView' and @text='Change password']");
 		
-		SendKeysMobID("dymon0101","com.icrealtime.allie:id/edittext_item");
+		SendKeysMobID("dymon0101","com.icrealtime.allie:id/current_password");
 		
-	String pass = RandomStringUtils.randomAlphanumeric(9);
+	String pass = RandomStringUtils.randomAlphanumeric(7)+"D1";
 		System.out.println(pass);
 		Thread.sleep(200);
-		SendKeysXpath(pass,"//*[@class='android.widget.LinearLayout' and @index='2']");
-		SendKeysXpath(pass,"//*[@class='android.widget.LinearLayout' and @index='3']");
+		SendKeysXpath(pass,"//*[@class='android.widget.EditText' and @index='1']");
+		SendKeysXpath(pass,"//*[@class='android.widget.EditText' and @index='2']");
 	
 		
 		//String mailIDck = GetAttributeMobXpath("name", "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]");
@@ -791,7 +791,7 @@ TapName("Cancel");
 				
 				//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.ProgressBar[1]
 				
-				Thread.sleep(7900);
+				Thread.sleep(10000);
 				TapID("com.icrealtime.allie:id/player_rec_bottom");
 			}
 	    	
@@ -814,8 +814,12 @@ TapName("Cancel");
 		 SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm");
 		 TapID("com.icrealtime.allie:id/player_gallery");
 
-		 String time = wd.findElement(By.xpath("//*[@class='android.widget.TextView' and @resource-id='com.icrealtime.allie:id/gallery_item_duration']")).getText();
-		 System.out.println(time);
+		 try {
+			String time = wd.findElement(By.xpath("//*[@class='android.widget.TextView' and @resource-id='com.icrealtime.allie:id/gallery_item_duration']")).getText();
+			 System.out.println(time);
+		} catch (Exception e3) {
+
+		}
 		 WaitID("com.icrealtime.allie:id/gallery_item_is_record");
 		 TapID("com.icrealtime.allie:id/gallery_item_is_record");
 	
@@ -831,8 +835,12 @@ TapName("Cancel");
 		SendKeysMobID(sharName,"com.icrealtime.allie:id/title_share");
 		 System.out.println(sharName);
 		SendKeysMobID(RandomStringUtils.randomAlphabetic(6),"com.icrealtime.allie:id/description_share");
-		 TapID("com.icrealtime.allie:id/facebook");
-		Thread.sleep(5900);
+		 TapID("com.icrealtime.allie:id/facebook");	
+		 try {
+			TapID("com.icrealtime.allie:id/facebook");
+		} catch (Exception e2) {
+		}
+		ProgressBar();
 	try {
 		//wd.findElement(By.name("Email address or phone number")).sendKeys("dmitriip@stelar.md");
 			wd.findElement(By.xpath("//*[@class='android.widget.EditText' and @content-desc='Email address or phone number']")).sendKeys("dmitriip@stelar.md");
@@ -841,11 +849,21 @@ TapName("Cancel");
 			//TapID("u_0_5"); 
 			wd.findElement(By.name("Log In ")).click();
 			Thread.sleep(50900);
-			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 997); put("y", (double) 1685); }});
-
+			try {
+				wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 997); put("y", (double) 1685); }});
+			} catch (Exception e) {
+			}
+			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 525); put("y", (double) 1201); }});
+			
 		} catch (Exception e1) {
-			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 997); put("y", (double) 1685); }});
-
+			try {
+				wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 997); put("y", (double) 1685); }});
+			} catch (Exception e) {
+		
+			}
+			
+			wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 525); put("y", (double) 1201); }});
+			
 		}
 
 	TapID("com.icrealtime.allie:id/youtube");
@@ -853,27 +871,54 @@ TapName("Cancel");
 		TapID("com.icrealtime.allie:id/youtube");
 	} catch (Exception e1) {
 	}
-	String Acc = wd.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.CheckedTextView[3]")).getText();
-	 System.out.println(Acc);
-	wd.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.CheckedTextView[3]")).click();
+	
+	
+	
+    int b = 1;
+    String mailAc = null;
+    String xpath = null;
+    do {  
+    	xpath = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.CheckedTextView["+ String.valueOf(b) +"]";
+    	
+    			 mailAc = GetTextMobXpath(xpath);
+
+		
+    	b++;
+    	
+    	
+    }
+   
+    	while (!mailAc.equals("dpleamco@icrealtech.com"));
+    TapXpath(xpath);
+
+    
 	TapID("android:id/button2");
+	 String exit=  wd.findElement(By.xpath("//*[@class='android.widget.ImageButton' and @content-desc='Navigate up']")).getTagName();
+
 	TapID("com.icrealtime.allie:id/button_share");
 
-	 String alertTitle =  null;
+	 String progr =  null;
 	 int v = 0;
 	 do {
-		  alertTitle = wd.findElement(By.id("android:id/alertTitle")).getText();
+		 // alertTitle = wd.findElement(By.id("android:id/alertTitle")).getText();
+		 try {
+			progr=  wd.findElement(By.xpath("//*[@class='android.widget.ImageButton' and @content-desc='Navigate up']")).getTagName();
+		} catch (Exception e1) {
+	
+		}
+			
 			 try {
-				String progr = wd.findElement(By.id("android:id/progress_percent")).getText();
+				 progr = wd.findElement(By.id("android:id/progress_percent")).getText();
 				 System.out.print(progr + "/");
 			} catch (Exception e) {
+				//progr =  null;
 			}
 			 Thread.sleep(4000);
 			 v++;
-		 }while (!alertTitle.equals("Your videos were uploaded") && v < 120);
-	 System.out.println(alertTitle);
+		 }while (!progr.equals("android.widget.ImageButton") && v < 20);
+	 System.out.println("/");
 	 
-	 TapID("android:id/button1");
+	 //TapID("android:id/button1");
 	 TapXpath("//*[@class='android.widget.ImageButton' and @content-desc='Navigate up']");
 		//TapName("Navigate up");
 	 wd.findElement(By.name("Open navigation drawer")).click();
@@ -889,34 +934,40 @@ TapName("Cancel");
 		
 		try {
 			setUpWeb(); //WebDriver
-			
-			Get("https://www.facebook.com/login.php");
-			driver.findElement(By.id("email")).sendKeys("100008481453656@facebook.com");
+			Get("https://www.youtube.com/account");	
 
-			driver.findElement(By.id("pass")).sendKeys("Dymon01");
-			driver.findElement(By.id("loginbutton")).click();
-			driver.findElement(By.id("userNavigationLabel")).click();
-			driver.findElement(By.cssSelector("span._54nh > div.clearfix > div.lfloat._ohe")).click();
-			String Name_streamF = GetTextWebXpath("//div[1]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div/div/div[2]/div[2]/div[2]/div[1]/div[1]/div/div[2]/div/div/div[1]/div[2]/table/tbody/tr/td[2]/div[1]/div[2]/a/span");
+			SendKeysID("dpleamco@icrealtech.com","Email");
+			ClickName("next");
+			SendKeysID("Dymon0101","Passwd");
+			ClickName("signIn");
+
+
+			Thread.sleep(9000);
+			Get("https://www.youtube.com/my_videos?o=U");
+			Thread.sleep(10000);
+			String Name_streamY = GetTextWebXpath("//div[2]/div[4]/div/div[5]/div/div[2]/div[9]/ol/li[1]/div/div/div[1]/div[2]/div[1]/div/a");
+
+			System.out.println("YT_"+Name_streamY);
+					} catch (Exception e) {
+			System.out.println("CheckSaringFailyoutube");
+		}
+Thread.sleep(14000);
+try {
+	
+Get("https://www.facebook.com/login.php");
+driver.findElement(By.id("email")).sendKeys("100008481453656@facebook.com");
+
+driver.findElement(By.id("pass")).sendKeys("Dymon01");
+driver.findElement(By.id("loginbutton")).click();
+driver.findElement(By.id("userNavigationLabel")).click();
+driver.findElement(By.cssSelector("span._54nh > div.clearfix > div.lfloat._ohe")).click();
+String Name_streamF = GetTextWebXpath("//div[1]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div/div/div[2]/div[2]/div[2]/div[1]/div[1]/div/div[2]/div/div/div[1]/div[2]/table/tbody/tr/td[2]/div[1]/div[2]/a/span");
 System.out.println("FB_"+Name_streamF);
 ClickXpath("//div[1]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div/div/div[2]/div[2]/div[2]/div[1]/div[1]/div/div[2]/div/div/div[1]/div[2]/table/tbody/tr/td[2]/div[1]/div[2]/a/span");
-Thread.sleep(14000);
-Get("https://www.youtube.com/account");	
 
-SendKeysID("dpleamco@icrealtech.com","Email");
-ClickName("next");
-SendKeysID("Dymon0101","Passwd");
-ClickName("signIn");
-
-
-Thread.sleep(2000);
-Get("https://www.youtube.com/my_videos?o=U");
-Thread.sleep(9000);
-String Name_streamY = GetTextWebXpath("//div[2]/div[4]/div/div[5]/div/div[2]/div[9]/ol/li[1]/div/div/div[1]/div[2]/div[1]/div/a");
-				System.out.println("YT_"+Name_streamY);
 quit();
 		} catch (Exception e) {
-			System.out.println("CheckSaringFail");
+			System.out.println("CheckSaringFailfacebook");
 		}
 	    }
 	    
@@ -1003,7 +1054,7 @@ quit();
 			WaitName("Select device");
 			Thread.sleep(2800);
 			//TapName("Allie-16155203625");
-			TapName("Allie-16155100228");
+			//TapName("Allie-16155100228");
 		}
 		try {//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIATextField[1]
 			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIASecureTextField[1]")).sendKeys("admin");
@@ -1030,9 +1081,10 @@ quit();
 			}
 			
 			ProgressBar();
-				WaitID("android:id/customPanel");
+			//	WaitID("android:id/customPanel");
 			
 				TapID("android:id/button1");
+				ProgressBar();
 				WaitID("com.icrealtime.allie:id/camera_title");
 				Thread.sleep(1800);
 				TapID("com.icrealtime.allie:id/camera_availability_status");

@@ -325,9 +325,11 @@ public class Basemethods extends BaseTest {
 		TapXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAButton[1]");
 		TapName("LOGIN");
 		System.out.println("____LOGIN_Passed____");
-		Thread.sleep(6000);
+		Thread.sleep(8000);
+	
 		WaitName("Side menu button");
 		wd.findElement(By.name("Side menu button")).click();
+		WaitXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]");
 		wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]")).click();
 		TapName("Change password");
 		TapName("TextField Account Settings Current Password");
@@ -903,19 +905,13 @@ quit();
 		
 
 	
-	wd.findElement(By.name("Button My ALLies Edit")).click();
-wd.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", (double) 1); put("touchCount", (double) 1); put("duration", 0.5); put("x", (double) 440); put("y", (double) 187); }});
-		
-try {
-	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[5]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]")).click();
-	Thread.sleep(5200);
-	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIASecureTextField[1]")).sendKeys("splinex271813");
-	TapXpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]");
-} catch (Exception e) {
-}
-wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[12]/UIAStaticText[1]")).click();
-		wd.findElement(By.name("REMOVE")).click();
-		TapName("Ok");
+		wd.findElement(By.name("Button My ALLies Edit")).click();
+		wd.findElement(By.name("Camera open settings")).click();	
+		String BLEpass = GetTextMobXpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[11]/UIAStaticText[2]");
+		System.out.println(BLEpass);
+TapName("Remove ALLie");
+			wd.findElement(By.name("REMOVE")).click();
+			TapName("Ok");
 	} catch (Exception e) {
 		
 	}
@@ -932,7 +928,7 @@ wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATab
 		wd.findElement(By.name("Back button black")).click();
 	}
 	
-	wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[5]/UIAButton[1]")).click();
+
 	
 }
 
@@ -969,15 +965,15 @@ wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATab
 
 	    public void AddCamera() throws Exception {
 	    	Thread.sleep(4600);
-		WaitName("Buy new allie");
-		TapName("Add new allie small");
+//		WaitName("Buy new allie");
+//		TapName("Add new allie small");
 		TapName("FIND NEW ALLIE");
 		
 		WaitName("Select Camera");
 		try {
 
-			
-			TapName("Allie-16155100228");
+			TapName("Allie-11155101833");
+			//TapName("Allie-16155100228");
 			//TapName("Allie-16155203625");
 		} catch (Exception e3) {
 			System.out.println("Filed to connect wifi");
@@ -992,7 +988,7 @@ wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATab
 			WaitName("Select device");
 			Thread.sleep(2800);
 			//TapName("Allie-16155203625");
-			TapName("Allie-16155100228");
+			TapName("Allie-11155101833");
 		}
 		try {//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIATextField[1]
 			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIACollectionView[1]/UIACollectionCell[1]/UIASecureTextField[1]")).sendKeys("admin");
